@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringBoot集成Swagger, 荀乐说">
+    <meta name="keywords" content="第一周, 荀乐说">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SpringBoot集成Swagger | 荀乐说</title>
+    <title>第一周 | 荀乐说</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -212,7 +212,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SpringBoot集成Swagger</h1>
+                    <h1 class="description center-align post-title">第一周</h1>
                 </div>
             </div>
         </div>
@@ -328,21 +328,9 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
+                                <a href="/tags/%E8%AE%B0%E5%BD%95/">
                                     <span class="chip bg-color">
-                                        Java
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/SpringBoot/">
-                                    <span class="chip bg-color">
-                                        SpringBoot
-                                    </span>
-                                </a>
-                                
-                                <a href="/tags/Swagger/">
-                                    <span class="chip bg-color">
-                                        Swagger
+                                        记录
                                     </span>
                                 </a>
                                 
@@ -354,8 +342,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                                <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                                 
                         </div>
@@ -368,7 +356,7 @@
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>
                         发布日期:&nbsp;&nbsp;
-                            2021-07-06
+                            2021-07-31
                     </div>
                     
 
@@ -376,7 +364,7 @@
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>
                                 更新日期:&nbsp;&nbsp;
-                                    2021-07-23
+                                    2021-08-01
                             </div>
                             
                                 <!--添加作者信息-->
@@ -390,7 +378,7 @@
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>
                                         文章字数:&nbsp;&nbsp;
-                                            833
+                                            157
                                     </div>
                                     
 
@@ -398,7 +386,7 @@
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>
                                                 阅读时长:&nbsp;&nbsp;
-                                                    3
+                                                    1
                                                         分
                                             </div>
                                             
@@ -414,131 +402,21 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="SpringBoot集成Swagger"><a href="#SpringBoot集成Swagger" class="headerlink" title="SpringBoot集成Swagger"></a>SpringBoot集成Swagger</h1><p>这是我参与新手入门的第一篇文章</p>
-<hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在Web后端人员开发接口时，需要对接口进行测试，这是我们可以使用到今天要提到的工具Swagger。</p>
-<h2 id="Swagger是什么？"><a href="#Swagger是什么？" class="headerlink" title="Swagger是什么？"></a>Swagger是什么？</h2><ul>
-<li>  Swagger官网网址：<a target="_blank" rel="noopener" href="https://swagger.io/">API Documentation &amp; Design Tools for Teams | Swagger</a></li>
-</ul>
-<p>进入官网我们就可以看见官方对Swagger的简介</p>
-<blockquote>
-<p>  Simplify API development for users, teams, and enterprises with the Swagger open source and professional toolset. Find out how Swagger can help you design and document your APIs at scale.</p>
-</blockquote>
-<p>简言之就是帮助用户简化API开发的工具，它可以将API可视化从而方便开发人员进行设计于调试。</p>
-<p>由于笔者主要使用Java，故今天想要介绍的是在SpringBoot中如何集成Swagger。</p>
-<h2 id="新建SpringBoot项目并引入依赖"><a href="#新建SpringBoot项目并引入依赖" class="headerlink" title="新建SpringBoot项目并引入依赖"></a>新建SpringBoot项目并引入依赖</h2><ul>
-<li><p>将Swagger的依赖引入SpringBoot项目</p>
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>io.springfox<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>springfox-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>  项目结构如图</p>
-</li>
-<li><p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/image-20210706155932304.png" alt="image-20210706155932304"></p>
-</li>
-</ul>
-<h2 id="新建Swagger配置类"><a href="#新建Swagger配置类" class="headerlink" title="新建Swagger配置类"></a>新建Swagger配置类</h2><p>Swagger配置类位置如上图</p>
-<p>Swagger配置类用于配置Swagger扫描的接口、作者的信息</p>
-<p>配置类代码如下</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @author xunle
- */</span>
-<span class="token annotation punctuation">@EnableSwagger2</span>
-<span class="token annotation punctuation">@Configuration</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SwaggerConfig</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/**
-     * 配置Swagger的信息
-     */</span>
-    <span class="token keyword">private</span> ApiInfo <span class="token function">getApiInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//作者信息</span>
-        Contact contact <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Contact</span><span class="token punctuation">(</span><span class="token string">"xunle"</span><span class="token punctuation">,</span><span class="token string">"https://xunle1.github.io/"</span><span class="token punctuation">,</span><span class="token string">"1601315809@qq.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ApiInfoBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//标题</span>
-                <span class="token punctuation">.</span><span class="token function">title</span><span class="token punctuation">(</span><span class="token string">"Swagger Test"</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//描述信息</span>
-                <span class="token punctuation">.</span><span class="token function">description</span><span class="token punctuation">(</span><span class="token string">"SpringBoot集成Swagger"</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//版本号</span>
-                <span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span><span class="token string">"v1.0"</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//作者信息</span>
-                <span class="token punctuation">.</span><span class="token function">contact</span><span class="token punctuation">(</span>contact<span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+                                <h1 id="第一周-7-26-8-1"><a href="#第一周-7-26-8-1" class="headerlink" title="第一周(7/26~8/1)"></a>第一周(7/26~8/1)</h1><p><strong>本周总结</strong></p>
+<img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210801144939.png" alt="image-20210801144938294" style="zoom:50%;">
 
-    <span class="token comment" spellcheck="true">/**
-     * 用于配置Swagger扫描接口
-     */</span>
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token keyword">public</span> Docket <span class="token function">docket</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Docket</span><span class="token punctuation">(</span>DocumentationType<span class="token punctuation">.</span>SWAGGER_2<span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">apiInfo</span><span class="token punctuation">(</span><span class="token function">getApiInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//apis用于配置扫描哪些接口</span>
-                <span class="token punctuation">.</span><span class="token function">apis</span><span class="token punctuation">(</span>RequestHandlerSelectors<span class="token punctuation">.</span><span class="token function">basePackage</span><span class="token punctuation">(</span><span class="token string">"com.example.swagger.controller"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//paths用于配置路径选择</span>
-                <span class="token punctuation">.</span><span class="token function">paths</span><span class="token punctuation">(</span>PathSelectors<span class="token punctuation">.</span><span class="token function">ant</span><span class="token punctuation">(</span><span class="token string">"/hello/**"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token comment" spellcheck="true">//是否开启Swagger</span>
-                <span class="token punctuation">.</span><span class="token function">enable</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="新建Controller"><a href="#新建Controller" class="headerlink" title="新建Controller"></a>新建Controller</h2><p>Controller位置如上图</p>
-<p>Controller类中定义接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @author xunle
- */</span>
-<span class="token comment" spellcheck="true">//Api 类信息</span>
-<span class="token annotation punctuation">@Api</span><span class="token punctuation">(</span>tags <span class="token operator">=</span> <span class="token string">"Swagger测试Controller"</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Controller</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SwaggerController</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//ApiOperation 方法描述</span>
-    <span class="token annotation punctuation">@ApiOperation</span><span class="token punctuation">(</span><span class="token string">"Swagger测试Get方法"</span><span class="token punctuation">)</span>
-    <span class="token annotation punctuation">@ResponseBody</span>
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/hello/test"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"Swagger测试"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    
-    <span class="token annotation punctuation">@ApiOperation</span><span class="token punctuation">(</span><span class="token string">"Swagger是否扫描路径"</span><span class="token punctuation">)</span>
-    <span class="token annotation punctuation">@ResponseBody</span>
-    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/hi/test"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">testPathSelector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token string">"selected!"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Swagger-ui基本信息"><a href="#Swagger-ui基本信息" class="headerlink" title="Swagger-ui基本信息"></a>Swagger-ui基本信息</h2><p>一般情况下访问 ==工程名/swagger-ui.html==</p>
-<p>笔者本机访问 <a target="_blank" rel="noopener" href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a></p>
-<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/image-20210706162908770.png" alt="image-20210706162908770"></p>
-<p>前两步的配置都在Swagger-ui中显示出来了，可以对照着看配置对应的显示</p>
-<p>注意Controller中配置的Path，第二个Get方法路径==/hi/test==不匹配Swagger配置类中的路径==/hello/**==，故不会显示在Swagger-ui中</p>
-<h2 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h2><p>在点击对应API后</p>
-<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/image-20210706163636565.png" alt="image-20210706163636565"></p>
-<blockquote>
 <ul>
-<li>  Parameters为参数列表</li>
-<li>Response为返回信息<ul>
-<li>  Code：状态码</li>
-<li>  Description：访问成功时Example Value中显示数据类型，Model表示返回的是实体类</li>
+<li>  这周主要完成了好友模块的前端页面设计和后端接口开发，包括添加好友，好友列表展示等。</li>
+<li>  本来是想先写聊天模块的数据库设计，但是中途发现有点复杂，就先去把简单的好友页面写完了，所以聊天模块就顺验到下周吧</li>
 </ul>
-</li>
-</ul>
-</blockquote>
-<p>点击Try it out后显示如下：</p>
-<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/image-20210706164104575.png" alt="image-20210706164104575"></p>
-<p>点击Execute进行接口测试后显示如下：</p>
-<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/image-20210706164349701.png" alt="image-20210706164349701"></p>
-<blockquote>
+<hr>
+<p><strong>第二周(8.2~8.8)</strong></p>
+<img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210801145817.png" alt="image-20210801145808021" style="zoom:50%;">
+
 <ul>
-<li>  Response body：返回信息</li>
-<li>  Response headers：响应头</li>
+<li>  希望下一周可以把聊天室的聊天模块写完，顺便回顾一下Java集合类的设计。</li>
+<li>  希望下一周☀可以收敛一点，人要给热麻了。</li>
 </ul>
-</blockquote>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>至此，关于SpringBoot集成Swagger和在Swagger-ui中测试接口就已经介绍完了。这是笔者我第一次写文，同时也因为这两天期末考试，得专心复习（平时不努力，期末撞大运😭），所以Swagger还有很多没有说到，包括Swagger对接口中参数的注解描述，对实体类的描述等等，等期末考试完了再来填补上。如果有同志发现任何勘误请与我联系进行修改。最后，写的很匆忙，网上相关文章也很多，如果有人愿意停留观看甚至点赞那是对我莫大的鼓励，谢谢观看。</p>
 
                                     
                             </div>
@@ -565,7 +443,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xunle1.github.io/2021/07/05/springboot-ji-cheng-swagger/">https://xunle1.github.io/2021/07/05/springboot-ji-cheng-swagger/</a>
+                    <a href="https://xunle1.github.io/2021/07/31/di-yi-zhou/">https://xunle1.github.io/2021/07/31/di-yi-zhou/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -603,21 +481,9 @@
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/Java/">
+                                                    <a href="/tags/%E8%AE%B0%E5%BD%95/">
                                                         <span class="chip bg-color">
-                                                            Java
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/SpringBoot/">
-                                                        <span class="chip bg-color">
-                                                            SpringBoot
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/Swagger/">
-                                                        <span class="chip bg-color">
-                                                            Swagger
+                                                            记录
                                                         </span>
                                                     </a>
                                                     
@@ -665,68 +531,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2021/07/08/leetcode-shua-ti-ji-lu/">
-                    <div class="card-image">
-                        
-                        <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210709143608.jpeg" class="responsive-img" alt="LeetCode刷题记录">
-                        
-                        <span class="card-title">LeetCode刷题记录</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-09
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/leetCode/" class="post-category">
-                                    leetCode
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/07/05/springboot-ji-cheng-swagger/">
+                <a href="/2021/07/31/di-yi-zhou/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SpringBoot集成Swagger">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="第一周">
                         
-                        <span class="card-title">SpringBoot集成Swagger</span>
+                        <span class="card-title">第一周</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -737,14 +552,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
                                 </a>
                             
                             
@@ -755,16 +570,56 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/%E8%AE%B0%E5%BD%95/">
+                        <span class="chip bg-color">记录</span>
                     </a>
                     
-                    <a href="/tags/SpringBoot/">
-                        <span class="chip bg-color">SpringBoot</span>
-                    </a>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/27/ke-fu-tuo-yan-de-di-yi-bu/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="克服拖延的第一步">
+                        
+                        <span class="card-title">克服拖延的第一步</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
+                                    生活
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
                     
-                    <a href="/tags/Swagger/">
-                        <span class="chip bg-color">Swagger</span>
+                    <a href="/tags/%E8%AE%B0%E5%BD%95/">
+                        <span class="chip bg-color">记录</span>
                     </a>
                     
                 </div>
