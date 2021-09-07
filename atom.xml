@@ -6,7 +6,7 @@
   <link href="https://xunle1.github.io/atom.xml" rel="self"/>
   
   <link href="https://xunle1.github.io/"/>
-  <updated>2021-08-01T07:09:02.950Z</updated>
+  <updated>2021-09-07T14:49:23.331Z</updated>
   <id>https://xunle1.github.io/</id>
   
   <author>
@@ -17,36 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一周</title>
-    <link href="https://xunle1.github.io/2021/07/31/di-yi-zhou/"/>
-    <id>https://xunle1.github.io/2021/07/31/di-yi-zhou/</id>
-    <published>2021-07-31T15:04:31.000Z</published>
-    <updated>2021-08-01T07:09:02.950Z</updated>
+    <title>Java内存区域</title>
+    <link href="https://xunle1.github.io/2021/09/07/java-nei-cun-qu-yu/"/>
+    <id>https://xunle1.github.io/2021/09/07/java-nei-cun-qu-yu/</id>
+    <published>2021-09-07T14:46:10.000Z</published>
+    <updated>2021-09-07T14:49:23.331Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;第一周-7-26-8-1&quot;&gt;&lt;a href=&quot;#第一周-7-26-8-1&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;Java内存区域&quot;&gt;&lt;a href=&quot;#Java内存区域&quot; class=&quot;headerlink&quot; title=&quot;Java内存区域&quot;&gt;&lt;/a&gt;Java内存区域&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;JDK 1.8以前：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
         
       
     
     
     
-    <category term="生活" scheme="https://xunle1.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="后端" scheme="https://xunle1.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-    <category term="记录" scheme="https://xunle1.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
     
   </entry>
   
   <entry>
     <title>克服拖延的第一步</title>
-    <link href="https://xunle1.github.io/2021/07/27/ke-fu-tuo-yan-de-di-yi-bu/"/>
-    <id>https://xunle1.github.io/2021/07/27/ke-fu-tuo-yan-de-di-yi-bu/</id>
-    <published>2021-07-28T00:32:59.000Z</published>
-    <updated>2021-08-01T07:09:08.009Z</updated>
+    <link href="https://xunle1.github.io/2021/09/06/ke-fu-tuo-yan-de-di-yi-bu/"/>
+    <id>https://xunle1.github.io/2021/09/06/ke-fu-tuo-yan-de-di-yi-bu/</id>
+    <published>2021-09-07T00:32:59.000Z</published>
+    <updated>2021-09-07T14:43:31.067Z</updated>
     
     
       

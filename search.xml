@@ -4,23 +4,25 @@
   
     
     <entry>
-      <title>第一周</title>
-      <link href="/2021/07/31/di-yi-zhou/"/>
-      <url>/2021/07/31/di-yi-zhou/</url>
+      <title>Java内存区域</title>
+      <link href="/2021/09/07/java-nei-cun-qu-yu/"/>
+      <url>/2021/09/07/java-nei-cun-qu-yu/</url>
       
-        <content type="html"><![CDATA[<h1 id="第一周-7-26-8-1"><a href="#第一周-7-26-8-1" class="headerlink" title="第一周(7/26~8/1)"></a>第一周(7/26~8/1)</h1><p><strong>本周总结</strong></p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210801144939.png" alt="image-20210801144938294" style="zoom:50%;"><ul><li>  这周主要完成了好友模块的前端页面设计和后端接口开发，包括添加好友，好友列表展示等。</li><li>  本来是想先写聊天模块的数据库设计，但是中途发现有点复杂，就先去把简单的好友页面写完了，所以聊天模块就顺验到下周吧</li></ul><hr><p><strong>第二周(8.2~8.8)</strong></p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210801145817.png" alt="image-20210801145808021" style="zoom:50%;"><ul><li>  希望下一周可以把聊天室的聊天模块写完，顺便回顾一下Java集合类的设计。</li><li>  希望下一周☀可以收敛一点，人要给热麻了。</li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h1><p><strong>JDK 1.8以前：</strong></p><p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907003129.png" alt="JVM运行时数据区域"></p><p><strong>JDK 1.8以后:</strong></p><p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907003137.png" alt="Java运行时数据区域JDK1.8"></p><p><strong>线程私有：</strong></p><ul><li><p><strong>虚拟机栈</strong></p><p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907220846.jpg" alt="虚拟机栈"></p><p>  Java 虚拟机栈是由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法出口信息。</p><p>  <strong>局部变量表主要存放了编译期可知的各种数据类型</strong>（boolean、byte、char、short、int、float、long、double）、<strong>对象引用</strong>（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。</p><p>  <strong>Java 虚拟机栈会出现两种错误：<code>StackOverFlowError</code> 和 <code>OutOfMemoryError</code>。</strong></p><ul><li>  <strong><code>StackOverFlowError</code>：</strong> 若 Java 虚拟机栈的内存大小不允许动态扩展，那么当线程请求栈的深度超过当前 Java 虚拟机栈的最大深度的时候，就抛出 StackOverFlowError 错误。</li><li>  <strong><code>OutOfMemoryError</code>：</strong> Java 虚拟机栈的内存大小可以动态扩展， 如果虚拟机在动态扩展栈时无法申请到足够的内存空间，则抛出<code>OutOfMemoryError</code>异常。</li></ul></li><li><p><strong>本地方法栈</strong></p><p>  本地方法栈与虚拟机栈发挥的作用相似，区别在于虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈为虚拟机使用到的本地（Native）方法服务</p></li><li><p><strong>程序计数器</strong></p><p>  程序计数器是一块较小的内存空间，它可以看作是当前线程所执行的字节码的行号指示器。</p><p>  程序计数器的作用：</p><ol><li> 字节码解释器通过改变程序计数器来依次读取指令，从而实现代码的流程控制，如：顺序执行、选择、循环、异常处理。</li><li> 在多线程的情况下，程序计数器用于记录当前线程执行的位置，从而当线程被切换回来的时候能够知道该线程上次运行到哪儿了。</li></ol><p>  程序计数器是唯一一个没有规定任何<code>OutOfMemoryError</code>的内存区域</p></li></ul><p><strong>线程共享：</strong></p><ul><li><p><strong>堆</strong></p><p>  Java堆的目的是存放对象实例，几乎所有对象实例都在堆上分配内存。</p><p>  Java堆也是垃圾收集器管理的主要区域。从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代；再细致一点有：<code>Eden</code> 空间、<code>From Survivor</code>、<code>To Survivor</code> 空间等。<strong>进一步划分的目的是更好地回收内存，或者更快地分配内存。</strong></p><p>  JDK 7及以前堆内存区域：</p><p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907222227.png" alt="JVM堆内存结构-JDK7"></p><p>  JDK 8以后堆内存区域：</p><p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907222306.png" alt="JVM对内存区域-jdk8"></p></li><li><p><strong>方法区</strong></p><p>  方法区与 Java 堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</p></li><li><p><strong>运行时常量池</strong></p><p>  运行时常量池是方法区的一部分。Class 文件中除了有类的版本、字段、方法、接口等描述信息外，还有常量池表（用于存放编译期生成的各种字面量和符号引用）</p></li><li><p><strong>直接内存</strong></p><p>  直接内存并不是虚拟机运行时数据区的一部分，也不是虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用。而且也可能导致 <code>OutOfMemoryError</code> 错误出现。</p></li></ul><hr><p><em>参考阅读：</em></p><p><a href="https://book.douban.com/subject/34907497/">深入理解Java虚拟机（第3版） (豆瓣) (douban.com)</a></p><p><a href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/jvm/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md">JavaGuide</a></p>]]></content>
       
       
       <categories>
           
-          <category> 生活 </category>
+          <category> 后端 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 记录 </tag>
+            <tag> Java </tag>
+            
+            <tag> JVM </tag>
             
         </tags>
       
@@ -30,10 +32,10 @@
     
     <entry>
       <title>克服拖延的第一步</title>
-      <link href="/2021/07/27/ke-fu-tuo-yan-de-di-yi-bu/"/>
-      <url>/2021/07/27/ke-fu-tuo-yan-de-di-yi-bu/</url>
+      <link href="/2021/09/06/ke-fu-tuo-yan-de-di-yi-bu/"/>
+      <url>/2021/09/06/ke-fu-tuo-yan-de-di-yi-bu/</url>
       
-        <content type="html"><![CDATA[<h1 id="克服拖延的第一步"><a href="#克服拖延的第一步" class="headerlink" title="克服拖延的第一步"></a>克服拖延的第一步</h1><hr><p>我是个喜欢偷懒的人，或许大部分人都喜欢偷懒，不然怎么会有这么多人喜欢摸鱼这个词。记得以前学的熵增原理，高中老师把他推广了说，事物总是向混乱的方向发展，就好比房间会变乱。收拾房间就是对抗“熵增”的过程，人们就要付出精力。同样地，可以偷懒，总是想偷懒的。</p><p>我又想起辩论队学长说的话：“我们辩论队有很多学长学业都不差，不是因为对他们来说辩论就不消耗时间了，而是他们舍弃的是一部分娱乐的时间。每个人每天的时间都是一定的，大致上分成娱乐和学习，抱怨辩论太浪费时间导致学业下滑的人只是舍弃的是部分学习的时间，对他们来说娱乐的时间是不可能减的。”当时听到觉得醍醐灌顶，虽然是浅显易懂的道理。</p><p>我自认为是个拖延症患者，什么事都是能拖就拖，买火车票也是明天要走了才买票，有时发现没票了只能没办法后天再走。写作业就更别提了。</p><p>于是，我想着克服一下自己一放纵就放纵到每边的情形，想着指定一下学习的计划（虽然以前也制定过，没坚持下来过）。</p><p>计划如下：</p><ul><li><p>  以周为单位记录学习的情况，每周写一篇周报（正经人谁写日记）。</p></li><li><p>  周报内容为这一周的感悟和下一周的计划。</p></li><li><p>使用<a href="https://todo.microsoft.com/tasks/zh-cn/">Microsoft To Do</a>记录</p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210729002658.png" alt="todo" style="zoom: 50%;"></li><li><p>  一周中遇到的bug，解决的问题整理成稿发在博客上，整理了就发。</p></li></ul><hr><p>不知道能坚持多久，但立个Flag在这好歹看见还是会有点羞愧。也希望这个博客可以有些日常内容，不然花个一两天搭好放着里发霉了。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="克服拖延的第一步"><a href="#克服拖延的第一步" class="headerlink" title="克服拖延的第一步"></a>克服拖延的第一步</h1><hr><p>我是个喜欢偷懒的人，或许大部分人都喜欢偷懒，不然怎么会有这么多人喜欢摸鱼这个词。记得以前学的熵增原理，高中老师把他推广了说，事物总是向混乱的方向发展，就好比房间会变乱。收拾房间就是对抗“熵增”的过程，人们就要付出精力。同样地，可以偷懒，总是想偷懒的。</p><p>我又想起辩论队学长说的话：“我们辩论队有很多学长学业都不差，不是因为对他们来说辩论就不消耗时间了，而是他们舍弃的是一部分娱乐的时间。每个人每天的时间都是一定的，大致上分成娱乐和学习，抱怨辩论太浪费时间导致学业下滑的人只是舍弃的是部分学习的时间，对他们来说娱乐的时间是不可能减的。”当时听到觉得醍醐灌顶，虽然是浅显易懂的道理。</p><p>我自认为是个拖延症患者，什么事都是能拖就拖，买火车票也是明天要走了才买票，有时发现没票了只能没办法后天再走。写作业就更别提了。</p><p>于是，我想着克服一下自己一放纵就放纵到每边的情形，想着指定一下学习的计划（虽然以前也制定过，没坚持下来过）。</p><p>计划如下：</p><ul><li><p>  以周为单位记录学习的情况，每周写一篇周报（正经人谁写日记）。</p></li><li><p>  周报内容为这一周的感悟和下一周的计划。</p></li><li><p>  使用<a href="https://todo.microsoft.com/tasks/zh-cn/">Microsoft To Do</a>记录</p></li><li><p>  一周中遇到的bug，解决的问题整理成稿发在博客上，整理了就发。</p></li></ul><hr><p>不知道能坚持多久，但立个Flag在这好歹看见还是会有点羞愧。也希望这个博客可以有些日常内容，不然花个一两天搭好放着里发霉了。</p>]]></content>
       
       
       <categories>
