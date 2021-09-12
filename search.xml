@@ -8,7 +8,7 @@
       <link href="/2021/09/12/9-6-9-12-zhou-ji/"/>
       <url>/2021/09/12/9-6-9-12-zhou-ji/</url>
       
-        <content type="html"><![CDATA[<h1 id="9-6-9-12周记"><a href="#9-6-9-12周记" class="headerlink" title="9.6-9.12周记"></a>9.6-9.12周记</h1><p>这周是大三上的第一周，暑假做完聊天室小demo之后两个星期都没敲代码了，感觉原来的基础知识又有些遗忘了。接下来得好好复习一下Java的基础知识以及学习JVM和Java并发的相关知识，希望能够在9月结束掉这两块知识</p><p><strong>本周总结</strong></p><ul><li>  初步了解了下JVM的内存区域划分以及垃圾收集算法和各种垃圾收集器。</li></ul><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210912234839.png" alt="image-20210912234649847" style="zoom:80%;"><hr><p><strong>下周计划</strong></p><ul><li>  继续看《深入JVM虚拟机》的类加载过程章节</li><li>  了解Java并发编程</li></ul><img src="C:\Users\16013\AppData\Roaming\Typora\typora-user-images\image-20210912234824081.png" alt="image-20210912234824081" style="zoom:80%;">]]></content>
+        <content type="html"><![CDATA[<h1 id="9-6-9-12周记"><a href="#9-6-9-12周记" class="headerlink" title="9.6-9.12周记"></a>9.6-9.12周记</h1><p>这周是大三上的第一周，暑假做完聊天室小demo之后两个星期都没敲代码了，感觉原来的基础知识又有些遗忘了。接下来得好好复习一下Java的基础知识以及学习JVM和Java并发的相关知识，希望能够在9月结束掉这两块知识</p><p><strong>本周总结</strong></p><ul><li>  初步了解了下JVM的内存区域划分以及垃圾收集算法和各种垃圾收集器。</li></ul><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210912234839.png" alt="本周总结" style="zoom:80%;"><hr><p><strong>下周计划</strong></p><ul><li>  继续看《深入JVM虚拟机》的类加载过程章节</li><li>  了解Java并发编程</li></ul><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210912235710.png" alt="下周计划" style="zoom:80%;">]]></content>
       
       
       <categories>
