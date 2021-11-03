@@ -6,7 +6,7 @@
   <link href="https://xunle1.github.io/atom.xml" rel="self"/>
   
   <link href="https://xunle1.github.io/"/>
-  <updated>2021-11-02T08:51:35.950Z</updated>
+  <updated>2021-11-03T13:47:40.001Z</updated>
   <id>https://xunle1.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java代理模式</title>
+    <link href="https://xunle1.github.io/2021/11/03/java-dai-li-mo-shi/"/>
+    <id>https://xunle1.github.io/2021/11/03/java-dai-li-mo-shi/</id>
+    <published>2021-11-03T13:41:20.000Z</published>
+    <updated>2021-11-03T13:47:40.001Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;代理模式&quot;&gt;&lt;a href=&quot;#代理模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="设计模式" scheme="https://xunle1.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>克服拖延的第一步</title>
     <link href="https://xunle1.github.io/2021/11/02/ke-fu-tuo-yan-de-di-yi-bu/"/>
     <id>https://xunle1.github.io/2021/11/02/ke-fu-tuo-yan-de-di-yi-bu/</id>
     <published>2021-11-02T09:00:00.000Z</published>
-    <updated>2021-11-02T08:51:35.950Z</updated>
+    <updated>2021-11-03T13:45:48.787Z</updated>
     
     
       
@@ -34,7 +59,7 @@
     
     
     
-    <category term="生活" scheme="https://xunle1.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="随笔" scheme="https://xunle1.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
     <category term="记录" scheme="https://xunle1.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
@@ -74,7 +99,7 @@
     <link href="https://xunle1.github.io/2021/07/23/qian-tan-lru-huan-cun-ji-zhi-suan-fa-ti/"/>
     <id>https://xunle1.github.io/2021/07/23/qian-tan-lru-huan-cun-ji-zhi-suan-fa-ti/</id>
     <published>2021-07-23T12:03:02.000Z</published>
-    <updated>2021-07-28T16:03:59.997Z</updated>
+    <updated>2021-11-03T13:45:58.754Z</updated>
     
     
       
@@ -87,12 +112,10 @@
     
     
     
-    <category term="leetCode" scheme="https://xunle1.github.io/categories/leetCode/"/>
+    <category term="算法" scheme="https://xunle1.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="数据结构" scheme="https://xunle1.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
     
   </entry>
   
@@ -101,7 +124,7 @@
     <link href="https://xunle1.github.io/2021/07/08/leetcode-shua-ti-ji-lu/"/>
     <id>https://xunle1.github.io/2021/07/08/leetcode-shua-ti-ji-lu/</id>
     <published>2021-07-09T06:30:25.000Z</published>
-    <updated>2021-11-02T08:45:01.957Z</updated>
+    <updated>2021-11-03T13:45:22.118Z</updated>
     
     
       
@@ -114,12 +137,10 @@
     
     
     
-    <category term="leetCode" scheme="https://xunle1.github.io/categories/leetCode/"/>
+    <category term="算法" scheme="https://xunle1.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="数据结构" scheme="https://xunle1.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-    <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
     
   </entry>
   

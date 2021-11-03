@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java内存区域, 荀乐说">
+    <meta name="keywords" content="Java代理模式, 荀乐说">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java内存区域 | 荀乐说</title>
+    <title>Java代理模式 | 荀乐说</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -207,12 +207,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211103214424.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java内存区域</h1>
+                    <h1 class="description center-align post-title">Java代理模式</h1>
                 </div>
             </div>
         </div>
@@ -334,12 +334,6 @@
                                     </span>
                                 </a>
                                 
-                                <a href="/tags/JVM/">
-                                    <span class="chip bg-color">
-                                        JVM
-                                    </span>
-                                </a>
-                                
                         </div>
                         
                 </div>
@@ -348,8 +342,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/%E5%90%8E%E7%AB%AF/" class="post-category">
-                                    后端
+                                <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
                                 </a>
                                 
                         </div>
@@ -362,7 +356,7 @@
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>
                         发布日期:&nbsp;&nbsp;
-                            2021-09-07
+                            2021-11-03
                     </div>
                     
 
@@ -370,7 +364,7 @@
                             <div class="post-date info-break-policy">
                                 <i class="far fa-calendar-check fa-fw"></i>
                                 更新日期:&nbsp;&nbsp;
-                                    2021-09-07
+                                    2021-11-03
                             </div>
                             
                                 <!--添加作者信息-->
@@ -384,7 +378,7 @@
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>
                                         文章字数:&nbsp;&nbsp;
-                                            878
+                                            931
                                     </div>
                                     
 
@@ -408,59 +402,141 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="Java内存区域"><a href="#Java内存区域" class="headerlink" title="Java内存区域"></a>Java内存区域</h1><p><strong>JDK 1.8以前：</strong></p>
-<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907003129.png" alt="JVM运行时数据区域"></p>
-<p><strong>JDK 1.8以后:</strong></p>
-<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907003137.png" alt="Java运行时数据区域JDK1.8"></p>
-<p><strong>线程私有：</strong></p>
+                                <h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p>代理通常指的通过一个代理类实现对真实类的控制访问。</p>
+<p>在有些情况下，一个客户不能或者不想直接访问另一个对象，这时需要找一个中介帮忙完成某项任务，这个中介就是代理对象。比如租房子时与中介沟通租房的一切事宜，不直接接触房东。</p>
+<p>Java中根据代理的创建时期，代理的类型分为两种。</p>
 <ul>
-<li><p><strong>虚拟机栈</strong></p>
-<p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907220846.jpg" alt="虚拟机栈"></p>
-<p>  Java 虚拟机栈是由一个个栈帧组成，而每个栈帧中都拥有：局部变量表、操作数栈、动态链接、方法出口信息。</p>
-<p>  <strong>局部变量表主要存放了编译期可知的各种数据类型</strong>（boolean、byte、char、short、int、float、long、double）、<strong>对象引用</strong>（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。</p>
-<p>  <strong>Java 虚拟机栈会出现两种错误：<code>StackOverFlowError</code> 和 <code>OutOfMemoryError</code>。</strong></p>
+<li>  静态代理：程序员创建代理类或特定工具类源码对其编译，在程序运行前就生成了.class文件</li>
+<li>  动态代理：在程序运行时通过反射机制动态创建</li>
+</ul>
+<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p>创建一个<code>RentService</code>接口</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">RentService</span> <span class="token punctuation">{</span>
+    
+    <span class="token keyword">void</span> <span class="token function">pay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>实现类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RentServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">RentService</span><span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"房客付钱咯..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>代理类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RentServiceProxy</span> <span class="token keyword">implements</span> <span class="token class-name">RentService</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> RentService rentService<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">RentServiceProxy</span><span class="token punctuation">(</span>RentService rentService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>rentService <span class="token operator">=</span> rentService<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">see</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"房客看房咯..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">see</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        rentService<span class="token punctuation">.</span><span class="token function">pay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">sign</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sign</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"房客签名咯..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestProxy</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        RentService rentService <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RentServiceProxy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">RentServiceImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        rentService<span class="token punctuation">.</span><span class="token function">pay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果如图</p>
+<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211103171645.png" alt="实例结果"></p>
+<p>通过<code>RentServiceProxy</code>实现了对<code>RentService</code>类的拓展，在测试类中代码量没有增加但是扩展了功能。</p>
+<p>但静态代理的缺点在于</p>
 <ul>
-<li>  <strong><code>StackOverFlowError</code>：</strong> 若 Java 虚拟机栈的内存大小不允许动态扩展，那么当线程请求栈的深度超过当前 Java 虚拟机栈的最大深度的时候，就抛出 StackOverFlowError 错误。</li>
-<li>  <strong><code>OutOfMemoryError</code>：</strong> Java 虚拟机栈的内存大小可以动态扩展， 如果虚拟机在动态扩展栈时无法申请到足够的内存空间，则抛出<code>OutOfMemoryError</code>异常。</li>
+<li>当需要代理多个类的时候，由于代理对象要实现与目标对象一致的接口，有两种方式：<ul>
+<li>  只维护一个代理类，由这个代理类实现多个接口，但是这样就导致<strong>代理类过于庞大</strong></li>
+<li>  新建多个代理类，每个目标对象对应一个代理类，但是这样会**产生过多的代理类</li>
 </ul>
 </li>
-<li><p><strong>本地方法栈</strong></p>
-<p>  本地方法栈与虚拟机栈发挥的作用相似，区别在于虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈为虚拟机使用到的本地（Native）方法服务</p>
-</li>
-<li><p><strong>程序计数器</strong></p>
-<p>  程序计数器是一块较小的内存空间，它可以看作是当前线程所执行的字节码的行号指示器。</p>
-<p>  程序计数器的作用：</p>
-<ol>
-<li> 字节码解释器通过改变程序计数器来依次读取指令，从而实现代码的流程控制，如：顺序执行、选择、循环、异常处理。</li>
-<li> 在多线程的情况下，程序计数器用于记录当前线程执行的位置，从而当线程被切换回来的时候能够知道该线程上次运行到哪儿了。</li>
-</ol>
-<p>  程序计数器是唯一一个没有规定任何<code>OutOfMemoryError</code>的内存区域</p>
-</li>
-</ul>
-<p><strong>线程共享：</strong></p>
-<ul>
-<li><p><strong>堆</strong></p>
-<p>  Java堆的目的是存放对象实例，几乎所有对象实例都在堆上分配内存。</p>
-<p>  Java堆也是垃圾收集器管理的主要区域。从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代；再细致一点有：<code>Eden</code> 空间、<code>From Survivor</code>、<code>To Survivor</code> 空间等。<strong>进一步划分的目的是更好地回收内存，或者更快地分配内存。</strong></p>
-<p>  JDK 7及以前堆内存区域：</p>
-<p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907222227.png" alt="JVM堆内存结构-JDK7"></p>
-<p>  JDK 8以后堆内存区域：</p>
-<p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210907222306.png" alt="JVM对内存区域-jdk8"></p>
-</li>
-<li><p><strong>方法区</strong></p>
-<p>  方法区与 Java 堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</p>
-</li>
-<li><p><strong>运行时常量池</strong></p>
-<p>  运行时常量池是方法区的一部分。Class 文件中除了有类的版本、字段、方法、接口等描述信息外，还有常量池表（用于存放编译期生成的各种字面量和符号引用）</p>
-</li>
-<li><p><strong>直接内存</strong></p>
-<p>  直接内存并不是虚拟机运行时数据区的一部分，也不是虚拟机规范中定义的内存区域，但是这部分内存也被频繁地使用。而且也可能导致 <code>OutOfMemoryError</code> 错误出现。</p>
-</li>
+<li>  当接口需要增加、删除、修改方法的时候，目标对象与代理类都要同时修改，<strong>不易维护</strong>。</li>
 </ul>
 <hr>
-<p><em>参考阅读：</em></p>
-<p><a target="_blank" rel="noopener" href="https://book.douban.com/subject/34907497/">深入理解Java虚拟机（第3版） (豆瓣) (douban.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Snailclimb/JavaGuide/blob/master/docs/java/jvm/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F.md">JavaGuide</a></p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>java中动态代理有两种实现方法</p>
+<ul>
+<li><p>JDK动态代理</p>
+<p>  涉及两个类<code>java.lang.reflect.Proxy</code>和<code>java.lang.reflect.InvocationHandler</code></p>
+<p>  javaDoc中对两者的描述</p>
+<blockquote>
+<p>  <code>Proxy</code>提供了创建动态代理类和实例的静态方法，它也是由这些方法创建的所有动态代理类的超类。</p>
+<p>  <code>InvocationHandler</code>是由代理实例的<em>调用处理程序</em>实现的<em>接口</em> 。</p>
+</blockquote>
+<p>  JDK动态代理的对象必须实现一个或多个接口。如果想代理没有实现接口的类，就可以使用CGLIB实现。</p>
+<p>  jdk动态代理之所以<strong>只能代理接口</strong>是因为<strong>代理类本身已经extends了Proxy，而java是不允许多重继承的</strong>，但是允许实现多个接口</p>
+</li>
+<li><p>Cglib动态代理</p>
+<p>  使用cglib代理的对象则无需实现接口，可以在运行时动态的生成某个类的子类，故需要某个类不能被标记为final</p>
+</li>
+</ul>
+<h3 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h3><p>使用<code>Proxy.newProxyInstance</code>方法生成代理对象</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> Object <span class="token function">newProxyInstance</span><span class="token punctuation">(</span>ClassLoader loader<span class="token punctuation">,</span>
+                                      Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">[</span><span class="token punctuation">]</span> interfaces<span class="token punctuation">,</span>
+                                      InvocationHandler h<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>  <code>loader</code>为代理类的类加载器</li>
+<li>  <code>interfaces</code>为代理类的接口数组</li>
+<li>  <code>h</code>为方法调用处理器</li>
+</ul>
+<p>使用<code>InvocationHandler</code>的<code>invoke</code>方法实现方法调用</p>
+<pre class="line-numbers language-java"><code class="language-java"> <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>  <code>proxy</code>：触发方法的代理类实例</li>
+<li>  <code>method</code>：代理类实现的接口中的方法</li>
+<li>  <code>args</code>：方法参数</li>
+</ul>
+<p>实现一个Handler，继承<code>InvocationHandler</code></p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DynamicProxyHandler</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> RentService rentService<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">DynamicProxyHandler</span><span class="token punctuation">(</span>RentService rentService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>rentService <span class="token operator">=</span> rentService<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Object <span class="token function">invoke</span><span class="token punctuation">(</span>Object proxy<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"房客看房咯..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Object o <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>rentService<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"房客签名咯..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试类</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestProxy</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        
+        RentService target <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RentServiceImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//自定义方法调用处理器</span>
+        DynamicProxyHandler handler <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamicProxyHandler</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获得代理类实例</span>
+        RentService rentServiceProxy <span class="token operator">=</span> <span class="token punctuation">(</span>RentService<span class="token punctuation">)</span> Proxy<span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>
+                target<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                target<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        rentServiceProxy<span class="token punctuation">.</span><span class="token function">pay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结果和静态代理类相同。</p>
 
                                     
                             </div>
@@ -487,7 +563,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xunle1.github.io/2021/09/07/java-nei-cun-qu-yu/">https://xunle1.github.io/2021/09/07/java-nei-cun-qu-yu/</a>
+                    <a href="https://xunle1.github.io/2021/11/03/java-dai-li-mo-shi/">https://xunle1.github.io/2021/11/03/java-dai-li-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -528,12 +604,6 @@
                                                     <a href="/tags/Java/">
                                                         <span class="chip bg-color">
                                                             Java
-                                                        </span>
-                                                    </a>
-                                                    
-                                                    <a href="/tags/JVM/">
-                                                        <span class="chip bg-color">
-                                                            JVM
                                                         </span>
                                                     </a>
                                                     
@@ -581,9 +651,59 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/11/03/java-dai-li-mo-shi/">
+                    <div class="card-image">
+                        
+                        <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211103214424.png" class="responsive-img" alt="Java代理模式">
+                        
+                        <span class="card-title">Java代理模式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/11/02/ke-fu-tuo-yan-de-di-yi-bu/">
                     <div class="card-image">
@@ -600,9 +720,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -620,54 +740,6 @@
                     
                     <a href="/tags/%E8%AE%B0%E5%BD%95/">
                         <span class="chip bg-color">记录</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/07/23/qian-tan-lru-huan-cun-ji-zhi-suan-fa-ti/">
-                    <div class="card-image">
-                        
-                        <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210723201521.png" class="responsive-img" alt="浅谈LRU缓存机制算法题">
-                        
-                        <span class="card-title">浅谈LRU缓存机制算法题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
