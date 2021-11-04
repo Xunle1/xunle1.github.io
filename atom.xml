@@ -6,7 +6,7 @@
   <link href="https://xunle1.github.io/atom.xml" rel="self"/>
   
   <link href="https://xunle1.github.io/"/>
-  <updated>2021-11-04T14:14:47.221Z</updated>
+  <updated>2021-11-04T14:26:09.080Z</updated>
   <id>https://xunle1.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://xunle1.github.io/2021/11/04/java-dan-li-mo-shi/"/>
     <id>https://xunle1.github.io/2021/11/04/java-dan-li-mo-shi/</id>
     <published>2021-11-04T14:13:24.000Z</published>
-    <updated>2021-11-04T14:14:47.221Z</updated>
+    <updated>2021-11-04T14:26:09.080Z</updated>
     
     
       
@@ -37,7 +37,7 @@
     <category term="设计模式" scheme="https://xunle1.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    <category term="singleton" scheme="https://xunle1.github.io/tags/singleton/"/>
     
   </entry>
   
@@ -46,7 +46,7 @@
     <link href="https://xunle1.github.io/2021/11/03/java-dai-li-mo-shi/"/>
     <id>https://xunle1.github.io/2021/11/03/java-dai-li-mo-shi/</id>
     <published>2021-11-03T13:41:20.000Z</published>
-    <updated>2021-11-04T09:41:32.265Z</updated>
+    <updated>2021-11-04T14:26:02.836Z</updated>
     
     
       
@@ -62,7 +62,7 @@
     <category term="设计模式" scheme="https://xunle1.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    <category term="proxy" scheme="https://xunle1.github.io/tags/proxy/"/>
     
   </entry>
   
@@ -71,7 +71,7 @@
     <link href="https://xunle1.github.io/2021/11/02/ke-fu-tuo-yan-de-di-yi-bu/"/>
     <id>https://xunle1.github.io/2021/11/02/ke-fu-tuo-yan-de-di-yi-bu/</id>
     <published>2021-11-02T09:00:00.000Z</published>
-    <updated>2021-11-03T13:45:48.787Z</updated>
+    <updated>2021-11-04T14:26:28.973Z</updated>
     
     
       
@@ -87,7 +87,7 @@
     <category term="随笔" scheme="https://xunle1.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="记录" scheme="https://xunle1.github.io/tags/%E8%AE%B0%E5%BD%95/"/>
+    <category term="拖延症" scheme="https://xunle1.github.io/tags/%E6%8B%96%E5%BB%B6%E7%97%87/"/>
     
   </entry>
   
@@ -96,7 +96,7 @@
     <link href="https://xunle1.github.io/2021/09/07/java-nei-cun-qu-yu/"/>
     <id>https://xunle1.github.io/2021/09/07/java-nei-cun-qu-yu/</id>
     <published>2021-09-07T14:46:10.000Z</published>
-    <updated>2021-09-07T14:49:23.331Z</updated>
+    <updated>2021-11-04T14:27:42.994Z</updated>
     
     
       
@@ -110,12 +110,10 @@
     
     
     
-    <category term="后端" scheme="https://xunle1.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="JVM" scheme="https://xunle1.github.io/categories/JVM/"/>
     
     
-    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
-    
-    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
+    <category term="内存" scheme="https://xunle1.github.io/tags/%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
@@ -124,7 +122,7 @@
     <link href="https://xunle1.github.io/2021/07/23/qian-tan-lru-huan-cun-ji-zhi-suan-fa-ti/"/>
     <id>https://xunle1.github.io/2021/07/23/qian-tan-lru-huan-cun-ji-zhi-suan-fa-ti/</id>
     <published>2021-07-23T12:03:02.000Z</published>
-    <updated>2021-11-03T13:45:58.754Z</updated>
+    <updated>2021-11-04T14:27:00.051Z</updated>
     
     
       
@@ -141,6 +139,8 @@
     
     
     <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
+    
+    <category term="LRU" scheme="https://xunle1.github.io/tags/LRU/"/>
     
   </entry>
   
@@ -174,7 +174,7 @@
     <link href="https://xunle1.github.io/2021/07/05/springboot-ji-cheng-swagger/"/>
     <id>https://xunle1.github.io/2021/07/05/springboot-ji-cheng-swagger/</id>
     <published>2021-07-06T05:39:26.000Z</published>
-    <updated>2021-07-23T12:12:07.437Z</updated>
+    <updated>2021-11-04T14:24:15.873Z</updated>
     
     
       
@@ -187,12 +187,8 @@
     
     
     
-    <category term="后端" scheme="https://xunle1.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    <category term="SpringBoot" scheme="https://xunle1.github.io/categories/SpringBoot/"/>
     
-    
-    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
-    
-    <category term="SpringBoot" scheme="https://xunle1.github.io/tags/SpringBoot/"/>
     
     <category term="Swagger" scheme="https://xunle1.github.io/tags/Swagger/"/>
     

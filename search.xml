@@ -20,7 +20,7 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> singleton </tag>
             
         </tags>
       
@@ -45,7 +45,7 @@
       
         <tags>
             
-            <tag> Java </tag>
+            <tag> proxy </tag>
             
         </tags>
       
@@ -70,7 +70,7 @@
       
         <tags>
             
-            <tag> 记录 </tag>
+            <tag> 拖延症 </tag>
             
         </tags>
       
@@ -88,16 +88,14 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> JVM </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Java </tag>
-            
-            <tag> JVM </tag>
+            <tag> 内存 </tag>
             
         </tags>
       
@@ -123,6 +121,8 @@
         <tags>
             
             <tag> leetcode </tag>
+            
+            <tag> LRU </tag>
             
         </tags>
       
@@ -165,16 +165,12 @@
       
       <categories>
           
-          <category> 后端 </category>
+          <category> SpringBoot </category>
           
       </categories>
       
       
         <tags>
-            
-            <tag> Java </tag>
-            
-            <tag> SpringBoot </tag>
             
             <tag> Swagger </tag>
             
