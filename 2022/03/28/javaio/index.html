@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java线程池, 荀乐说">
+    <meta name="keywords" content="JavaIO, 荀乐说">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java线程池 | 荀乐说</title>
+    <title>JavaIO | 荀乐说</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -212,7 +212,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java线程池</h1>
+                    <h1 class="description center-align post-title">JavaIO</h1>
                 </div>
             </div>
         </div>
@@ -328,9 +328,9 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                                <a href="/tags/IO/">
                                     <span class="chip bg-color">
-                                        多线程
+                                        IO
                                     </span>
                                 </a>
                                 
@@ -378,7 +378,7 @@
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>
                                         文章字数:&nbsp;&nbsp;
-                                            401
+                                            923
                                     </div>
                                     
 
@@ -386,7 +386,7 @@
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>
                                                 阅读时长:&nbsp;&nbsp;
-                                                    1
+                                                    3
                                                         分
                                             </div>
                                             
@@ -402,66 +402,80 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="初探线程池"><a href="#初探线程池" class="headerlink" title="初探线程池"></a>初探线程池</h1><h2 id="为什么要使用线程池"><a href="#为什么要使用线程池" class="headerlink" title="为什么要使用线程池"></a>为什么要使用线程池</h2><blockquote>
-<p>  使用线程池主要有以下三个原因：</p>
-<ol>
-<li> 创建/销毁线程需要消耗系统资源，线程池可以<strong>复用已创建的线程</strong>。</li>
-<li> <strong>控制并发的数量</strong>。并发数量过多，可能会导致资源消耗过多，从而造成服务器崩溃。（主要原因）</li>
-<li> <strong>可以对线程做统一管理</strong>。</li>
-</ol>
+                                <h1 id="JavaNIO"><a href="#JavaNIO" class="headerlink" title="JavaNIO"></a>JavaNIO</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="三种IO模型"><a href="#三种IO模型" class="headerlink" title="三种IO模型"></a>三种IO模型</h3><p>Java支持三种<code>I/O</code>模式</p>
+<ul>
+<li>  <code>BIO</code></li>
+<li>  <code>NIO</code></li>
+<li>  <code>AIO</code></li>
+</ul>
+<p><strong>BIO (Blocking):</strong></p>
+<blockquote>
+<p>  JDK1.4以前的同步阻塞IO，当客户端有连接请求时，服务器就需要启动一个线程进行处理。</p>
+<p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210725223923.png" alt="img"></p>
 </blockquote>
-<p>Java中线程池的顶层接口是<code>Executor</code>接口，而<code>ThreadPoolExecutor</code>是这个接口的实现类</p>
 <hr>
-<h2 id="线程池核心参数"><a href="#线程池核心参数" class="headerlink" title="线程池核心参数"></a>线程池核心参数</h2><ul>
-<li><p><code>int corePoolSize</code>：该线程池中的核心线程数</p>
+<p><strong>NIO (Non-blocking)</strong></p>
 <blockquote>
-<p>  线程池中有两类线程：核心线程和非核心线程。核心线程</p>
+<p>  JDK1.4以后，同步非阻塞IO，服务端使用一个线程处理多个请求，客户端发送的连接请求会注册到多路复用器上，多路复用器轮询到连接有<code>I/O</code>请求就处理</p>
+<p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210725224438.png" alt="img"></p>
 </blockquote>
-</li>
-<li><p><code>int maximumPoolSize</code>：该线程池允许的最大线程数</p>
+<hr>
+<p><strong>AIO (Asynchronous)</strong></p>
 <blockquote>
-<p>  非核心线程数+核心线程数</p>
+<p>  JDK1.7以后，异步非阻塞IO。它的特点是先由操作系统完成后才通知服务端程序启动线程去处理。</p>
 </blockquote>
-</li>
-<li><p><code>long keepAliveTime</code>：非核心线程闲置的超时时长</p>
-<blockquote>
-<p>  非核心线程如果处于闲置状态超过该值，就会被销毁。</p>
-</blockquote>
-</li>
-<li><p><code>TimeUnit</code>：keepAliveTime的时间单位</p>
-<blockquote>
-<p>  <code>TimeUnit</code>是一个枚举类型</p>
-</blockquote>
-</li>
-<li><p>  <code>workQueue</code>：阻塞队列，维护等待执行的线程</p>
-</li>
-<li><p>  <code>threadFactory</code>：创建线程的工厂</p>
-</li>
-<li><p>  <code>RejectedExecutionHandler</code>：拒绝策略的处理</p>
-</li>
+<hr>
+<p><strong>三种IO模型的适用场景</strong></p>
+<ul>
+<li>  <code>BIO</code> 方式适用于连接数目比较小且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，程序简单易理解。</li>
+<li>  <code>NIO</code> 方式适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，弹幕系统，服务器间通讯等，编程比较复杂。</li>
+<li>  <code>AIO</code> 方式使用于连接数目多且连接比较长（重操作）的架构，比如相册服务器，充分调用 <code>OS</code> 参与并发操作，编程比较复杂。</li>
 </ul>
 <hr>
-<h2 id="ThreadPoolExecutor的策略"><a href="#ThreadPoolExecutor的策略" class="headerlink" title="ThreadPoolExecutor的策略"></a>ThreadPoolExecutor的策略</h2><p>线程池本身有一个调度线程，用来管理线程池的各种事务。</p>
-<p>线程池也有自己的状态。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// runState is stored in the high-order bits</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> RUNNING    <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> SHUTDOWN   <span class="token operator">=</span>  <span class="token number">0</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> STOP       <span class="token operator">=</span>  <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TIDYING    <span class="token operator">=</span>  <span class="token number">2</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TERMINATED <span class="token operator">=</span>  <span class="token number">3</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="线程池处理流程"><a href="#线程池处理流程" class="headerlink" title="线程池处理流程"></a>线程池处理流程</h2><p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211219222945.png" alt="img"></p>
-<hr>
-<h2 id="常见线程池"><a href="#常见线程池" class="headerlink" title="常见线程池"></a>常见线程池</h2><blockquote>
-<p>  <code>java.util.concurrent.Executors</code> 类提供了几种静态方法创建线程池</p>
+<p><strong><code>NIO</code>和<code>BIO</code>的比较</strong></p>
 <ol>
-<li> <code>newCachedThreadPool</code></li>
-<li> <code>newFixedThreadPool</code></li>
-<li> <code>newSingleThreadExecutor</code></li>
-<li> <code>newScheduledThreadPool</code></li>
+<li> <code>BIO</code> 以流的方式处理数据，而 <code>NIO</code> 以块的方式处理数据，块 <code>I/O</code> 的效率比流 <code>I/O</code> 高很多。</li>
+<li> <code>BIO</code> 是阻塞的，<code>NIO</code> 则是非阻塞的。</li>
+<li> <code>BIO</code> 基于字节流和字符流进行操作，而 <code>NIO</code> 基于 <code>Channel</code>（通道）和 <code>Buffer</code>（缓冲区）进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。<code>Selector</code>（选择器）用于监听多个通道的事件（比如：连接请求，数据到达等），因此使用单个线程就可以监听多个客户端通道。</li>
 </ol>
-</blockquote>
+<hr>
+<h2 id="NIO原理"><a href="#NIO原理" class="headerlink" title="NIO原理"></a>NIO原理</h2><h3 id="NIO三大核心"><a href="#NIO三大核心" class="headerlink" title="NIO三大核心"></a>NIO三大核心</h3><p><code>NIO</code> 有三大核心部分: <strong><code>Channel</code>（通道）、<code>Buffer</code>（缓冲区）、<code>Selector</code>（选择器）</strong> 。</p>
+<p><strong>NIO三大核心关系图</strong></p>
+<img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210725235607.png" alt="img" style="zoom: 67%;">
+
+<ol>
+<li> 每个 <code>Channel</code> 都会对应一个 <code>Buffer</code>。</li>
+<li> <code>Selector</code> 对应一个线程，一个线程对应多个 <code>Channel</code>（连接）。</li>
+<li> 该图反应了有三个 <code>Channel</code> 注册到该 <code>Selector</code> //程序</li>
+<li> 程序切换到哪个 <code>Channel</code> 是由事件决定的，<code>Event</code> 就是一个重要的概念。</li>
+<li> <code>Selector</code> 会根据不同的事件，在各个通道上切换。</li>
+<li> <code>Buffer</code> 就是一个内存块，底层是有一个数组。</li>
+<li> <code>Buffer</code>可以通过<code>flip</code>方法切换读写模式。</li>
+</ol>
+<hr>
+<h3 id="缓冲区（Buffer）"><a href="#缓冲区（Buffer）" class="headerlink" title="缓冲区（Buffer）"></a>缓冲区（Buffer）</h3><p>缓冲区（<code>Buffer</code>）：缓冲区本质上是一个<strong>可以读写数据的内存块</strong>，可以理解成是一个<strong>容器对象（含数组）</strong>，该对象提供了一组方法，可以更轻松地使用内存块，，缓冲区对象内置了一些机制，能够跟踪和记录缓冲区的状态变化情况。<code>Channel</code> 提供从文件、网络读取数据的渠道，但是读取或写入的数据都必须经由 <code>Buffer</code></p>
+<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210726001116.png" alt="img"></p>
+<p><strong>Buffer类及其子类</strong></p>
+<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210726001827.png" alt="image-20210726001826565"></p>
+<img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210726001851.png" alt="image-20210726001849519" style="zoom: 67%;">
+
+
+
+
+
+<hr>
+<h3 id="通道（Channel）"><a href="#通道（Channel）" class="headerlink" title="通道（Channel）"></a>通道（Channel）</h3><ol>
+<li><code>NIO</code>的通道类似于流，但有些区别如下：<ul>
+<li>  通道可以同时进行读写，而流只能读或者只能写</li>
+<li>  通道可以实现异步读写数据</li>
+<li>  通道可以从缓冲读数据，也可以写数据到缓冲:</li>
+</ul>
+</li>
+<li> <code>BIO</code> 中的 <code>Stream</code> 是单向的，例如 <code>FileInputStream</code> 对象只能进行读取数据的操作，而 <code>NIO</code> 中的通道（<code>Channel</code>）是双向的，可以读操作，也可以写操作。</li>
+<li> <code>Channel</code> 在 <code>NIO</code> 中是一个接口 <code>public interface Channel extends Closeable{}</code></li>
+<li> 常用的 <code>Channel</code> 类有：<code>FileChannel</code>、<code>DatagramChannel</code>、<code>ServerSocketChannel</code> 和 <code>SocketChannel</code>。<code>ServerSocketChanne</code> 类似 <code>ServerSocket</code>、<code>SocketChannel</code> 类似 <code>Socket</code></li>
+<li> <code>FileChannel</code> 用于文件的数据读写，<code>DatagramChannel</code> 用于 <code>UDP</code> 的数据读写，<code>ServerSocketChannel</code> 和 <code>SocketChannel</code> 用于 <code>TCP</code> 的数据读写。h</li>
+</ol>
 
                                     
                             </div>
@@ -488,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xunle1.github.io/2022/03/28/java-xian-cheng-chi/">https://xunle1.github.io/2022/03/28/java-xian-cheng-chi/</a>
+                    <a href="https://xunle1.github.io/2022/03/28/javaio/">https://xunle1.github.io/2022/03/28/javaio/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -526,9 +540,9 @@
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                                                    <a href="/tags/IO/">
                                                         <span class="chip bg-color">
-                                                            多线程
+                                                            IO
                                                         </span>
                                                     </a>
                                                     
@@ -576,9 +590,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/03/28/javaio/">
                     <div class="card-image">
@@ -595,9 +610,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-29
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -610,6 +625,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -628,12 +644,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/28/cao-zuo-xi-tong/">
+                <a href="/2022/03/28/java-xian-cheng-chi/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="操作系统">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Java线程池">
                         
-                        <span class="card-title">操作系统</span>
+                        <span class="card-title">Java线程池</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -650,8 +666,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -661,8 +677,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A6%82%E8%BF%B0/">
-                        <span class="chip bg-color">概述</span>
+                    <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">多线程</span>
                     </a>
                     
                 </div>

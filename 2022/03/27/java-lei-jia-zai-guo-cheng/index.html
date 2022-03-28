@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java线程池, 荀乐说">
+    <meta name="keywords" content="Java类加载过程, 荀乐说">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java线程池 | 荀乐说</title>
+    <title>Java类加载过程 | 荀乐说</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -212,7 +212,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java线程池</h1>
+                    <h1 class="description center-align post-title">Java类加载过程</h1>
                 </div>
             </div>
         </div>
@@ -328,9 +328,9 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                                <a href="/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD/">
                                     <span class="chip bg-color">
-                                        多线程
+                                        类加载
                                     </span>
                                 </a>
                                 
@@ -342,8 +342,8 @@
                         <div class="post-cate">
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                                <a href="/categories/Java/" class="post-category">
-                                    Java
+                                <a href="/categories/JVM/" class="post-category">
+                                    JVM
                                 </a>
                                 
                         </div>
@@ -356,7 +356,7 @@
                     <div class="post-date info-break-policy">
                         <i class="far fa-calendar-minus fa-fw"></i>
                         发布日期:&nbsp;&nbsp;
-                            2022-03-29
+                            2022-03-28
                     </div>
                     
 
@@ -378,7 +378,7 @@
                                     <div class="info-break-policy">
                                         <i class="far fa-file-word fa-fw"></i>
                                         文章字数:&nbsp;&nbsp;
-                                            401
+                                            803
                                     </div>
                                     
 
@@ -386,7 +386,7 @@
                                             <div class="info-break-policy">
                                                 <i class="far fa-clock fa-fw"></i>
                                                 阅读时长:&nbsp;&nbsp;
-                                                    1
+                                                    2
                                                         分
                                             </div>
                                             
@@ -402,65 +402,88 @@
 
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                <h1 id="初探线程池"><a href="#初探线程池" class="headerlink" title="初探线程池"></a>初探线程池</h1><h2 id="为什么要使用线程池"><a href="#为什么要使用线程池" class="headerlink" title="为什么要使用线程池"></a>为什么要使用线程池</h2><blockquote>
-<p>  使用线程池主要有以下三个原因：</p>
-<ol>
-<li> 创建/销毁线程需要消耗系统资源，线程池可以<strong>复用已创建的线程</strong>。</li>
-<li> <strong>控制并发的数量</strong>。并发数量过多，可能会导致资源消耗过多，从而造成服务器崩溃。（主要原因）</li>
-<li> <strong>可以对线程做统一管理</strong>。</li>
-</ol>
-</blockquote>
-<p>Java中线程池的顶层接口是<code>Executor</code>接口，而<code>ThreadPoolExecutor</code>是这个接口的实现类</p>
-<hr>
-<h2 id="线程池核心参数"><a href="#线程池核心参数" class="headerlink" title="线程池核心参数"></a>线程池核心参数</h2><ul>
-<li><p><code>int corePoolSize</code>：该线程池中的核心线程数</p>
+                                <h1 id="Java类加载过程"><a href="#Java类加载过程" class="headerlink" title="Java类加载过程"></a>Java类加载过程</h1><p>Java中类的加载过程如下图：</p>
+<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210910213555.png" alt="类加载过程"></p>
+<p>其中<strong>连接</strong>过程又分三步：<strong>验证–&gt;准备–&gt;解析</strong></p>
 <blockquote>
-<p>  线程池中有两类线程：核心线程和非核心线程。核心线程</p>
-</blockquote>
+<ul>
+<li><strong>加载：</strong><ul>
+<li>  通过一个类的<strong>完全限定</strong>查找此类字节码文件，并利用字节码文件创建一个 Class 文件</li>
+</ul>
 </li>
-<li><p><code>int maximumPoolSize</code>：该线程池允许的最大线程数</p>
-<blockquote>
-<p>  非核心线程数+核心线程数</p>
-</blockquote>
+<li><strong>验证：</strong><ul>
+<li>  确保 Class 文件字节流中包含的信息符合当前虚拟机要求，不会危害虚拟机安全。主要包括<strong>文件格式验证</strong>、<strong>元数据验证</strong>、<strong>字节码验证</strong>、<strong>符号引用验证</strong></li>
+</ul>
 </li>
-<li><p><code>long keepAliveTime</code>：非核心线程闲置的超时时长</p>
-<blockquote>
-<p>  非核心线程如果处于闲置状态超过该值，就会被销毁。</p>
-</blockquote>
+<li><strong>准备：</strong><ul>
+<li>  为<strong>类变量</strong>分配内存并赋初值，此处不包括 final 修饰的变量</li>
+</ul>
 </li>
-<li><p><code>TimeUnit</code>：keepAliveTime的时间单位</p>
-<blockquote>
-<p>  <code>TimeUnit</code>是一个枚举类型</p>
-</blockquote>
+<li><strong>解析：</strong><ul>
+<li>  主要将常量池中的符号引用转变为直接引用</li>
+</ul>
 </li>
-<li><p>  <code>workQueue</code>：阻塞队列，维护等待执行的线程</p>
-</li>
-<li><p>  <code>threadFactory</code>：创建线程的工厂</p>
-</li>
-<li><p>  <code>RejectedExecutionHandler</code>：拒绝策略的处理</p>
+<li><strong>初始化：</strong><ul>
+<li>  若该类具有超类，则对其进行初始化，执行静态初始化器和静态初始化变量。</li>
+</ul>
 </li>
 </ul>
+</blockquote>
 <hr>
-<h2 id="ThreadPoolExecutor的策略"><a href="#ThreadPoolExecutor的策略" class="headerlink" title="ThreadPoolExecutor的策略"></a>ThreadPoolExecutor的策略</h2><p>线程池本身有一个调度线程，用来管理线程池的各种事务。</p>
-<p>线程池也有自己的状态。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// runState is stored in the high-order bits</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> RUNNING    <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> SHUTDOWN   <span class="token operator">=</span>  <span class="token number">0</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> STOP       <span class="token operator">=</span>  <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TIDYING    <span class="token operator">=</span>  <span class="token number">2</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> TERMINATED <span class="token operator">=</span>  <span class="token number">3</span> <span class="token operator">&lt;&lt;</span> COUNT_BITS<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<hr>
-<h2 id="线程池处理流程"><a href="#线程池处理流程" class="headerlink" title="线程池处理流程"></a>线程池处理流程</h2><p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211219222945.png" alt="img"></p>
-<hr>
-<h2 id="常见线程池"><a href="#常见线程池" class="headerlink" title="常见线程池"></a>常见线程池</h2><blockquote>
-<p>  <code>java.util.concurrent.Executors</code> 类提供了几种静态方法创建线程池</p>
+<h2 id="双亲委派模型"><a href="#双亲委派模型" class="headerlink" title="双亲委派模型"></a>双亲委派模型</h2><p><strong>三层类加载器</strong></p>
+<blockquote>
+<ul>
+<li>  启动类加载器 BootStrap ClassLoader：负责加载存放在 \lib 目录或被 -Xbootclaspath 参数，启动类加载器无法被 Java 程序直接引用，用户在自定义类加载器时，需要给引导类加载器处理</li>
+<li>  扩展类加载器 Extension Classloader：负责加载 \lib\ext 目录或者被 java.ext.dirs 系统变量所指定的目录中的所有类库</li>
+<li>  应用程序类加载器 Application Classloader（也叫系统类加载器）：负责加载用户类路径 ClassPath 上的所有类库</li>
+</ul>
+</blockquote>
+<p><strong>两个 class 对象是否是同一个类对象</strong></p>
+<blockquote>
+<ul>
+<li>  类的全限定名，包括包名必须一致</li>
+<li>  加载这个类的 ClassLoader 必须相同，即 ClassLoader 实例对象</li>
+</ul>
+</blockquote>
+<p><strong>双亲委派模型加载过程</strong></p>
+<blockquote>
 <ol>
-<li> <code>newCachedThreadPool</code></li>
-<li> <code>newFixedThreadPool</code></li>
-<li> <code>newSingleThreadExecutor</code></li>
-<li> <code>newScheduledThreadPool</code></li>
+<li> 如果一个类加载器收到类加载请求，它首先不会自己尝试加载这个类，而是把请求委托到父类执行。</li>
+<li> 每一层次的类加载器都会委托其父类加载器去完成，最终传回最顶层的启动类加载器中。</li>
+<li> 只有当所有父类加载器都无法完成这个类的加载请求时，子类加载器才会进行加载</li>
 </ol>
+<p>  <strong>作用</strong>：</p>
+<ul>
+<li>  这样可以避免重复加载类，当父类已经加载了该类时，就没必要再加载一次</li>
+<li>  考虑到安全因素，双亲委派模型可以避免子类加载器加载已经被父类加载器加载过的类。</li>
+</ul>
+</blockquote>
+<p><strong>破坏双亲委派模型</strong></p>
+<blockquote>
+<p>  为什么要破坏双亲委派模型？</p>
+<ul>
+<li>  因为类加载器受到加载范围的限制，在某些情况下父类加载器无法加载到需要的文件，这是就需要打破双亲委派模型，委托子类加载器去加载 Class 文件</li>
+</ul>
+<p>  <strong>怎么打破双亲委派模型</strong></p>
+<ul>
+<li>  使用<strong>线程上下文类加载器（ContextClassLoader）</strong>加载类，一般 ContexClassLoader 默认为应用类加载器</li>
+</ul>
+<p>  <strong>打破实例：</strong></p>
+<ul>
+<li><p><strong>JDBC</strong> 各种驱动的实现</p>
+<ul>
+<li>  加载 Driver 接口实现类的时候，DriverManager 由启动类加载器加载，而实现类由服务提供商加载</li>
+</ul>
+<p>  <img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20220317012243.png" alt="image-20220317012236388"></p>
+</li>
+<li><p><strong>Tomcat</strong></p>
+<ul>
+<li>  各个 webapps 需要隔离的环境，也需要一些共享的类</li>
+<li>  Tomcat 使用自定义类加载器去加载类，以免恶意或无意破坏</li>
+<li>  热部署</li>
+</ul>
+</li>
+</ul>
 </blockquote>
 
                                     
@@ -488,7 +511,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xunle1.github.io/2022/03/28/java-xian-cheng-chi/">https://xunle1.github.io/2022/03/28/java-xian-cheng-chi/</a>
+                    <a href="https://xunle1.github.io/2022/03/27/java-lei-jia-zai-guo-cheng/">https://xunle1.github.io/2022/03/27/java-lei-jia-zai-guo-cheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -526,9 +549,9 @@
                                         
                                             <div class="article-tag">
                                                 
-                                                    <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                                                    <a href="/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD/">
                                                         <span class="chip bg-color">
-                                                            多线程
+                                                            类加载
                                                         </span>
                                                     </a>
                                                     
@@ -580,12 +603,12 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/03/28/javaio/">
+                <a href="/2022/03/28/ji-suan-ji-wang-luo/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JavaIO">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="计算机网络">
                         
-                        <span class="card-title">JavaIO</span>
+                        <span class="card-title">计算机网络</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -602,8 +625,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
@@ -613,8 +636,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/IO/">
-                        <span class="chip bg-color">IO</span>
+                    <a href="/tags/%E6%A6%82%E8%BF%B0/">
+                        <span class="chip bg-color">概述</span>
                     </a>
                     
                 </div>
@@ -628,12 +651,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/28/cao-zuo-xi-tong/">
+                <a href="/2022/03/27/websocket/">
                     <div class="card-image">
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="操作系统">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="WebSocket">
                         
-                        <span class="card-title">操作系统</span>
+                        <span class="card-title">WebSocket</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -644,14 +667,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             
@@ -661,8 +684,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A6%82%E8%BF%B0/">
-                        <span class="chip bg-color">概述</span>
+                    <a href="/tags/%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">协议</span>
                     </a>
                     
                 </div>
