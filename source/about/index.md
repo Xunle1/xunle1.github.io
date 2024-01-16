@@ -1,7 +1,13 @@
 ---
-title: About
-date: 2023-09-02 17:02:42
+title: about
+date: 2024-01-16 14:22:20
+type: "about"
 ---
-# Xunle
 
-- Programmer in Chongqing
+# 荀乐
+
+这个名字的由来是玩《古剑奇谭网络版》的时候随机的，直接一个偷。
+
+- 重邮计算机专业本科毕业生
+- 熟悉 Web 后台开发
+- 常用语言：Java、C++、Go
