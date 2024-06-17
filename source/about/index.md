@@ -37,6 +37,7 @@ type: "about"
 - [Hider](https://github.com/kepano/obsidian-hider): 隐藏工具栏
 - [Typewriter Mode](https://github.com/davisriedel/obsidian-typewriter-mode): 打字机模式
 - [Wakatime](https://github.com/wakatime/obsidian-wakatime): 记录时间
+- [Excalidraw](https://excalidraw.com/): 画图
 
 ## Chrome 插件
 
