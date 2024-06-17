@@ -108,7 +108,7 @@ theme: oranges
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Xunle1/xunle1.github.io.git
+  repo: git@github.com:Xunle1/xunle1.github.io.git
   branch: master
 
 feed:
