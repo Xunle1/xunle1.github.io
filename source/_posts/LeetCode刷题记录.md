@@ -3,7 +3,6 @@ title: LeetCode刷题记录
 author: 荀乐
 tags:
   - leetcode
-categories:
   - 算法
 date: 2021-07-09 14:30:25
 ---

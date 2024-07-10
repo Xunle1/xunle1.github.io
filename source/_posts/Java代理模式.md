@@ -3,7 +3,6 @@ title: Java代理模式
 author: 荀乐
 tags:
   - proxy
-categories:
   - 设计模式
 date: 2021-11-03 21:41:20
 ---

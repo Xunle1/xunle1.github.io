@@ -2,8 +2,7 @@
 title: Java内存区域
 author: 荀乐
 tags:
-  - 内存
-categories:
+  - 内存区域
   - JVM
 date: 2021-09-07 22:46:10
 ---

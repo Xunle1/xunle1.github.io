@@ -3,7 +3,6 @@ title: JavaIO
 author: 荀乐
 tags:
   - IO
-categories:
   - Java
 date: 2022-03-29 01:11:43
 ---

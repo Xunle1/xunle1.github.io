@@ -3,7 +3,6 @@ title: Java单例模式
 author: 荀乐
 tags:
   - singleton
-categories:
   - 设计模式
 date: 2021-11-04 22:13:24
 ---

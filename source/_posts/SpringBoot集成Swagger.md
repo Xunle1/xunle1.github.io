@@ -3,8 +3,8 @@ title: SpringBoot集成Swagger
 author: 荀乐
 tags:
  - Swagger
-categories:
  - SpringBoot
+ - Java
 date: 2021-07-06 13:39:26
 
 ---

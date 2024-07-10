@@ -3,7 +3,6 @@ title: Java垃圾回收
 author: 荀乐
 tags:
   - 垃圾回收
-categories:
   - JVM
 date: 2021-12-29 15:39:57
 ---

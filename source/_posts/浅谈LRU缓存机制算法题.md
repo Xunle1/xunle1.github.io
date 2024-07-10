@@ -4,11 +4,8 @@ author: 荀乐
 tags:
   - LRU
   - leetcode
-categories:
   - 算法
 date: 2021-07-23 20:03:02
-
-
 ---
 # [146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
 

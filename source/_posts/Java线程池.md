@@ -3,7 +3,7 @@ title: Java线程池
 author: 荀乐
 tags:
   - 多线程
-categories:
+  - 并发
   - Java
 date: 2022-03-29 01:05:46
 ---

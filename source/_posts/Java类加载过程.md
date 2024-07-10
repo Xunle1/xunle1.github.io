@@ -3,7 +3,6 @@ title: Java类加载过程
 author: 荀乐
 tags:
   - 类加载
-categories:
   - JVM
 date: 2022-03-28 09:12:39
 ---
