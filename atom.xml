@@ -6,7 +6,7 @@
   <link href="https://xunle1.github.io/atom.xml" rel="self"/>
   
   <link href="https://xunle1.github.io/"/>
-  <updated>2024-06-17T11:46:49.904Z</updated>
+  <updated>2024-07-10T13:24:00.294Z</updated>
   <id>https://xunle1.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>HashMap 源码阅读</title>
+    <link href="https://xunle1.github.io/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    <id>https://xunle1.github.io/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</id>
+    <published>2024-07-10T13:16:34.000Z</published>
+    <updated>2024-07-10T13:24:00.294Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文为阅读 HashMap 源码的笔记，主要了解 HashMap 增删改查的过程。&lt;/p&gt;
+&lt;p&gt;文中代码和描述基于 openjdk 17，HashMap 底层数据结构采用 &lt;code&gt;Node&lt;/code&gt; 数组 + 链表 + 红黑树。&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    
+    <category term="HashMap" scheme="https://xunle1.github.io/tags/HashMap/"/>
+    
+    <category term="源码" scheme="https://xunle1.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Chromium 定制开发</title>
     <link href="https://xunle1.github.io/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/"/>
     <id>https://xunle1.github.io/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/</id>
     <published>2024-04-01T10:29:06.000Z</published>
-    <updated>2024-06-17T11:46:49.904Z</updated>
+    <updated>2024-07-10T13:12:19.292Z</updated>
     
     
       
@@ -45,7 +74,7 @@
     <link href="https://xunle1.github.io/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     <id>https://xunle1.github.io/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/</id>
     <published>2022-12-04T13:43:18.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:15:44.908Z</updated>
     
     
       
@@ -58,10 +87,10 @@
     
     
     
-    <category term="分布式" scheme="https://xunle1.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
     
     <category term="概述" scheme="https://xunle1.github.io/tags/%E6%A6%82%E8%BF%B0/"/>
+    
+    <category term="分布式" scheme="https://xunle1.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -70,7 +99,7 @@
     <link href="https://xunle1.github.io/2022/03/29/JavaIO/"/>
     <id>https://xunle1.github.io/2022/03/29/JavaIO/</id>
     <published>2022-03-28T17:11:43.000Z</published>
-    <updated>2024-06-17T11:46:49.904Z</updated>
+    <updated>2024-07-10T13:15:09.645Z</updated>
     
     
       
@@ -83,10 +112,10 @@
     
     
     
-    <category term="Java" scheme="https://xunle1.github.io/categories/Java/"/>
-    
     
     <category term="IO" scheme="https://xunle1.github.io/tags/IO/"/>
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
     
   </entry>
   
@@ -95,7 +124,7 @@
     <link href="https://xunle1.github.io/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
     <id>https://xunle1.github.io/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</id>
     <published>2022-03-28T17:05:46.000Z</published>
-    <updated>2024-06-21T10:03:50.244Z</updated>
+    <updated>2024-07-10T13:15:15.105Z</updated>
     
     
       
@@ -108,10 +137,12 @@
     
     
     
-    <category term="Java" scheme="https://xunle1.github.io/categories/Java/"/>
-    
     
     <category term="多线程" scheme="https://xunle1.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+    <category term="并发" scheme="https://xunle1.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
     
   </entry>
   
@@ -120,7 +151,7 @@
     <link href="https://xunle1.github.io/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     <id>https://xunle1.github.io/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</id>
     <published>2022-03-28T17:04:25.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:15:51.901Z</updated>
     
     
       
@@ -133,10 +164,10 @@
     
     
     
-    <category term="操作系统" scheme="https://xunle1.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
     
     <category term="概述" scheme="https://xunle1.github.io/tags/%E6%A6%82%E8%BF%B0/"/>
+    
+    <category term="操作系统" scheme="https://xunle1.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
@@ -145,7 +176,7 @@
     <link href="https://xunle1.github.io/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     <id>https://xunle1.github.io/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</id>
     <published>2022-03-28T17:01:30.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:15:42.096Z</updated>
     
     
       
@@ -158,10 +189,10 @@
     
     
     
-    <category term="计算机网络" scheme="https://xunle1.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
     
     <category term="概述" scheme="https://xunle1.github.io/tags/%E6%A6%82%E8%BF%B0/"/>
+    
+    <category term="计算机网络" scheme="https://xunle1.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -170,7 +201,7 @@
     <link href="https://xunle1.github.io/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/"/>
     <id>https://xunle1.github.io/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</id>
     <published>2022-03-28T01:12:39.000Z</published>
-    <updated>2024-06-17T11:46:49.904Z</updated>
+    <updated>2024-07-10T13:13:54.066Z</updated>
     
     
       
@@ -184,10 +215,10 @@
     
     
     
-    <category term="JVM" scheme="https://xunle1.github.io/categories/JVM/"/>
-    
     
     <category term="类加载" scheme="https://xunle1.github.io/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
+    
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
     
   </entry>
   
@@ -196,7 +227,7 @@
     <link href="https://xunle1.github.io/2022/03/28/WebSocket/"/>
     <id>https://xunle1.github.io/2022/03/28/WebSocket/</id>
     <published>2022-03-28T01:09:01.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:15:33.691Z</updated>
     
     
       
@@ -209,10 +240,10 @@
     
     
     
-    <category term="计算机网络" scheme="https://xunle1.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
     
     <category term="协议" scheme="https://xunle1.github.io/tags/%E5%8D%8F%E8%AE%AE/"/>
+    
+    <category term="计算机网络" scheme="https://xunle1.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -221,7 +252,7 @@
     <link href="https://xunle1.github.io/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
     <id>https://xunle1.github.io/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</id>
     <published>2021-12-29T07:39:57.000Z</published>
-    <updated>2024-06-17T11:46:49.904Z</updated>
+    <updated>2024-07-10T13:13:02.858Z</updated>
     
     
       
@@ -234,10 +265,10 @@
     
     
     
-    <category term="JVM" scheme="https://xunle1.github.io/categories/JVM/"/>
-    
     
     <category term="垃圾回收" scheme="https://xunle1.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
     
   </entry>
   
@@ -246,7 +277,7 @@
     <link href="https://xunle1.github.io/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     <id>https://xunle1.github.io/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-11-04T14:13:24.000Z</published>
-    <updated>2024-06-17T11:46:49.904Z</updated>
+    <updated>2024-07-10T13:12:53.744Z</updated>
     
     
       
@@ -259,10 +290,10 @@
     
     
     
-    <category term="设计模式" scheme="https://xunle1.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
     
     <category term="singleton" scheme="https://xunle1.github.io/tags/singleton/"/>
+    
+    <category term="设计模式" scheme="https://xunle1.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -271,7 +302,7 @@
     <link href="https://xunle1.github.io/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
     <id>https://xunle1.github.io/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-11-03T13:41:20.000Z</published>
-    <updated>2024-07-10T11:26:07.477Z</updated>
+    <updated>2024-07-10T13:12:59.316Z</updated>
     
     
       
@@ -284,10 +315,10 @@
     
     
     
-    <category term="设计模式" scheme="https://xunle1.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
     
     <category term="proxy" scheme="https://xunle1.github.io/tags/proxy/"/>
+    
+    <category term="设计模式" scheme="https://xunle1.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -296,7 +327,7 @@
     <link href="https://xunle1.github.io/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
     <id>https://xunle1.github.io/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</id>
     <published>2021-09-07T14:46:10.000Z</published>
-    <updated>2024-06-17T11:46:49.904Z</updated>
+    <updated>2024-07-10T13:14:05.469Z</updated>
     
     
       
@@ -310,10 +341,10 @@
     
     
     
-    <category term="JVM" scheme="https://xunle1.github.io/categories/JVM/"/>
     
+    <category term="内存区域" scheme="https://xunle1.github.io/tags/%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
     
-    <category term="内存" scheme="https://xunle1.github.io/tags/%E5%86%85%E5%AD%98/"/>
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
     
   </entry>
   
@@ -322,7 +353,7 @@
     <link href="https://xunle1.github.io/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/"/>
     <id>https://xunle1.github.io/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/</id>
     <published>2021-07-23T12:03:02.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:18:57.409Z</updated>
     
     
       
@@ -335,12 +366,12 @@
     
     
     
-    <category term="算法" scheme="https://xunle1.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
     
     <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
     
     <category term="LRU" scheme="https://xunle1.github.io/tags/LRU/"/>
+    
+    <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -349,7 +380,7 @@
     <link href="https://xunle1.github.io/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     <id>https://xunle1.github.io/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
     <published>2021-07-09T06:30:25.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:15:22.587Z</updated>
     
     
       
@@ -362,10 +393,10 @@
     
     
     
-    <category term="算法" scheme="https://xunle1.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
     
     <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
+    
+    <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -374,7 +405,7 @@
     <link href="https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/"/>
     <id>https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/</id>
     <published>2021-07-06T05:39:26.000Z</published>
-    <updated>2024-06-17T11:46:49.905Z</updated>
+    <updated>2024-07-10T13:15:28.792Z</updated>
     
     
       
@@ -387,10 +418,12 @@
     
     
     
-    <category term="SpringBoot" scheme="https://xunle1.github.io/categories/SpringBoot/"/>
-    
     
     <category term="Swagger" scheme="https://xunle1.github.io/tags/Swagger/"/>
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+    <category term="SpringBoot" scheme="https://xunle1.github.io/tags/SpringBoot/"/>
     
   </entry>
   
