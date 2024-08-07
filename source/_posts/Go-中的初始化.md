@@ -11,11 +11,11 @@ Go 语言会在声明变量类型的时候进行初始化，如果没有指定�
 - float: 0.0
 - bool: false
 - string: ""
-- 数组: []
+- 切片: []
 - 指针、函数、接口: nil
 - 结构体: 由属性的零值组成
 
-需要注意的是，Go 语言中声明（declaration）和定义（definition）都会为变量分配空间。
+需要注意的是，Go 语言中声明（declaration）和定义（definition）都会为变量分配空间。意思是不在需要像 Java 那样必须调用 new 来构造对象。
 
 举例如下：
 
@@ -46,7 +46,7 @@ type StructB struct {
 func main() {
         var declaration StructB
         fmt.Printf("Declaration StructB: \n%+v\n", declaration)
-        var definition = StructB{}
+        var definition = StructB{Int: 3, String: "foo"}
         fmt.Printf("Definition StructB: \n%+v\n", definition)
 }
 ```
@@ -57,6 +57,12 @@ func main() {
 Declaration StructB:
 {Int:0 String: Struct:{A:0 B:<nil>} Point:<nil> Array:[] Fun:<nil> Interface:<nil>}
 Definition StructB:
-{Int:0 String: Struct:{A:0 B:<nil>} Point:<nil> Array:[] Fun:<nil> Interface:<nil>}
+{Int:3 String:foo Struct:{A:0 B:<nil>} Point:<nil> Array:[] Fun:<nil> Interface:<nil>}
 ```
+
+可以发现声明的变量也可以直接使用，并且属性都被赋予了零值。
+
+# Reference
+
+[Effective Go](https://go.dev/doc/effective_go#data)
 
