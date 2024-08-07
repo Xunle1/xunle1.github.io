@@ -6,7 +6,7 @@
   <link href="https://xunle1.github.io/atom.xml" rel="self"/>
   
   <link href="https://xunle1.github.io/"/>
-  <updated>2024-07-10T13:24:00.294Z</updated>
+  <updated>2024-08-07T16:31:49.857Z</updated>
   <id>https://xunle1.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go 中的初始化</title>
+    <link href="https://xunle1.github.io/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>https://xunle1.github.io/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</id>
+    <published>2024-08-07T11:22:31.000Z</published>
+    <updated>2024-08-07T16:31:49.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Go 语言会在声明变量类型的时候进行初始化，如果没有指定值，那将会使用零值。各种类型的零值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int: 0&lt;/li&gt;
+&lt;li&gt;float: 0.0&lt;/li&gt;
+&lt;li&gt;bool: false&lt;/li&gt;
+&lt;li&gt;string:</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Go" scheme="https://xunle1.github.io/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>杂谈——毕业一年</title>
+    <link href="https://xunle1.github.io/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/"/>
+    <id>https://xunle1.github.io/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/</id>
+    <published>2024-08-04T16:12:03.000Z</published>
+    <updated>2024-08-07T17:19:46.907Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;从 CQUPT 毕业一年时间，身份从学生转换到打工人也已经一年时间。一年以来关于生活关于工作可能在生活上有许多想法，但都只是在脑海中绕了一圈，有的消失了，有的还留着。所以想用文字记录下当下的想法。&lt;/p&gt;
+&lt;h1 id=&quot;离职&quot;&gt;&lt;a href=&quot;#离职&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="杂谈" scheme="https://xunle1.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+    <category term="生活" scheme="https://xunle1.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>HashMap 源码阅读</title>
@@ -95,11 +149,11 @@
   </entry>
   
   <entry>
-    <title>JavaIO</title>
+    <title>Java IO</title>
     <link href="https://xunle1.github.io/2022/03/29/JavaIO/"/>
     <id>https://xunle1.github.io/2022/03/29/JavaIO/</id>
     <published>2022-03-28T17:11:43.000Z</published>
-    <updated>2024-07-10T13:15:09.645Z</updated>
+    <updated>2024-08-07T11:26:53.149Z</updated>
     
     
       
@@ -120,11 +174,11 @@
   </entry>
   
   <entry>
-    <title>Java线程池</title>
+    <title>Java 线程池</title>
     <link href="https://xunle1.github.io/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
     <id>https://xunle1.github.io/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</id>
     <published>2022-03-28T17:05:46.000Z</published>
-    <updated>2024-07-10T13:15:15.105Z</updated>
+    <updated>2024-08-07T11:26:46.255Z</updated>
     
     
       
@@ -197,11 +251,11 @@
   </entry>
   
   <entry>
-    <title>Java类加载过程</title>
+    <title>Java 类加载过程</title>
     <link href="https://xunle1.github.io/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/"/>
     <id>https://xunle1.github.io/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</id>
     <published>2022-03-28T01:12:39.000Z</published>
-    <updated>2024-07-10T13:13:54.066Z</updated>
+    <updated>2024-08-07T11:26:39.461Z</updated>
     
     
       
@@ -248,11 +302,11 @@
   </entry>
   
   <entry>
-    <title>Java垃圾回收</title>
+    <title>Java 垃圾回收</title>
     <link href="https://xunle1.github.io/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
     <id>https://xunle1.github.io/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</id>
     <published>2021-12-29T07:39:57.000Z</published>
-    <updated>2024-07-10T13:13:02.858Z</updated>
+    <updated>2024-08-07T11:26:34.360Z</updated>
     
     
       
@@ -273,11 +327,11 @@
   </entry>
   
   <entry>
-    <title>Java单例模式</title>
+    <title>Java 单例模式</title>
     <link href="https://xunle1.github.io/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     <id>https://xunle1.github.io/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-11-04T14:13:24.000Z</published>
-    <updated>2024-07-10T13:12:53.744Z</updated>
+    <updated>2024-08-07T11:26:31.068Z</updated>
     
     
       
@@ -298,11 +352,11 @@
   </entry>
   
   <entry>
-    <title>Java代理模式</title>
+    <title>Java 代理模式</title>
     <link href="https://xunle1.github.io/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
     <id>https://xunle1.github.io/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</id>
     <published>2021-11-03T13:41:20.000Z</published>
-    <updated>2024-07-10T13:12:59.316Z</updated>
+    <updated>2024-08-07T11:26:25.715Z</updated>
     
     
       
@@ -323,11 +377,11 @@
   </entry>
   
   <entry>
-    <title>Java内存区域</title>
+    <title>Java 内存区域</title>
     <link href="https://xunle1.github.io/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
     <id>https://xunle1.github.io/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</id>
     <published>2021-09-07T14:46:10.000Z</published>
-    <updated>2024-07-10T13:14:05.469Z</updated>
+    <updated>2024-08-07T11:26:43.168Z</updated>
     
     
       
@@ -349,11 +403,11 @@
   </entry>
   
   <entry>
-    <title>浅谈LRU缓存机制算法题</title>
+    <title>浅谈 LRU 缓存机制算法题</title>
     <link href="https://xunle1.github.io/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/"/>
     <id>https://xunle1.github.io/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/</id>
     <published>2021-07-23T12:03:02.000Z</published>
-    <updated>2024-07-10T13:18:57.409Z</updated>
+    <updated>2024-08-07T11:27:34.750Z</updated>
     
     
       
@@ -376,11 +430,11 @@
   </entry>
   
   <entry>
-    <title>LeetCode刷题记录</title>
+    <title>LeetCode 刷题记录</title>
     <link href="https://xunle1.github.io/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     <id>https://xunle1.github.io/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
     <published>2021-07-09T06:30:25.000Z</published>
-    <updated>2024-07-10T13:15:22.587Z</updated>
+    <updated>2024-08-07T11:27:58.206Z</updated>
     
     
       
@@ -401,11 +455,11 @@
   </entry>
   
   <entry>
-    <title>SpringBoot集成Swagger</title>
+    <title>Spring Boot 集成 Swagger</title>
     <link href="https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/"/>
     <id>https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/</id>
     <published>2021-07-06T05:39:26.000Z</published>
-    <updated>2024-07-10T13:15:28.792Z</updated>
+    <updated>2024-08-07T11:27:14.180Z</updated>
     
     
       

@@ -13,7 +13,7 @@
   
   <title>
     
-      archive_a: 2024 
+      杂谈——毕业一年 
       
       
       |
@@ -109,199 +109,156 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">杂谈——毕业一年</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2024-08-08 01:19:46
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%9D%82%E8%B0%88/" title="杂谈">
+                    #杂谈
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E7%94%9F%E6%B4%BB/" title="生活">
+                    #生活
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>从 CQUPT 毕业一年时间，身份从学生转换到打工人也已经一年时间。一年以来关于生活关于工作可能在生活上有许多想法，但都只是在脑海中绕了一圈，有的消失了，有的还留着。所以想用文字记录下当下的想法。</p>
+<h1 id="离职"><a href="#离职" class="headerlink" title="离职"></a>离职</h1><p>第一份正式工作在 A 公司，岗位是后台开发。我是从 22 年 10 月的时候开始实习，毕业转正，直到 24 年 6 月正式离职，算下来待了 3 + 11 + 5 &#x3D; 19 个月时间。</p>
+<p>在 A 公司学到了很多，虽然进 A 公司之前只会 Spring Boot 那一套，但是第一项目需要开发一个监控的 agent，学习了 Go 语言，对操作系统网络、进程、Shell 脚本也有了进一步了解。</p>
+<p>第二个项目参与了多端，管理端用回了 Spring Boot，为了方便开发还熟悉了 Docker 运行各种中间件，ci &#x2F; cd 流程。C 端为了开发客户端后台程序学习了 C++、Cmake，因为要跨平台运行，也进一步了解了 linux 中程序的运行。</p>
+<h2 id="为什么？"><a href="#为什么？" class="headerlink" title="为什么？"></a>为什么？</h2><p>第一，在 A 公司做的是 toB 产品，无所谓代码质量，只要能跑，能满足客户需求，能交付，那就足够了。除非是请求一个接口十几秒导致客户端卡住了，或者下载失败了，没人会关心代码写的怎么样，也没人会关心资源占用是不是太多，当然也可能是项目体量本身就小，还没有到需要优化的地步。总之，好像在业务方面我学不到更多东西了。</p>
+<p>第二，我好像并不清楚应该怎么评价我自己。我的意思是，我的岗位是后台开发工程师，我参与了 xx 项目的开发，应该怎么评价我的工作呢？项目有明确的工期安排，根据合同或者项目经理和客户讨论出来的工期，应该从我有没有按时完成任务来评价吗？如果 xx 时间前完成了 xx 任务，我就加一分？或者是不是应该从我有没有造成线上事故，解决事故的速度来判断？我没有找到答案，我只知道尽量在工期前完成任务，完不成就提一下延后，或者加一会儿班继续完成就行。没有人会对我进行评价，每个月的工资都是一样的，从另一个角度来说好像也挺好的。</p>
+<p>第三，也是被下一家公司老板评价说自我矛盾的点，我好像又想走技术上升通道，精进自己的专业，又遇难则退，抱怨外部条件。在 A 公司的项目需要了解 Chromium 源码。我的说辞是它太难了，A 公司又没有人教，我水平又有限，做的都是随便谁来都可以做的工作，简单描述就是：需要改一下某个按钮的行为，那就在可能触发这个按钮的地方附近打个断点，然后 debug 找到具体位置，修改一下逻辑就好。要说什么都没学到也不对，我确实了解了浏览器的一点点知识，但我又不能沉下心来钻研它，应该被称之为浮躁，或者“挫”。</p>
+<p>在 A 公司最后的阶段，我心理状态十分不好，变得易怒，焦虑，当然是在工作外的时间，也非常感谢女朋友的包容谅解。那时我觉得上班就是坐牢，我也不想写代码。我觉得自己没有价值，是个 loser，遇见困难就逃避，只愿意呆在自己的舒适圈，却还妄想自己如果做了 xx 事，可能就会怎么样。当时个人和家庭经济情况并不好，是负债的水平。我感觉好像是受够了？又或者是我不想再续那半年期的房租（😂）？最终我还是裸辞了，提前一个月打好招呼，和前辈老师谈了谈，六月初离开了 A 公司。</p>
+<h1 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h1><p>&#x2F;&#x2F; TODO</p>
+<h1 id="新工作"><a href="#新工作" class="headerlink" title="新工作"></a>新工作</h1><p>&#x2F;&#x2F; TODO</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2024-08-08 01:19:46
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%9D%82%E8%B0%88/" title="杂谈">
+                        #杂谈
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E7%94%9F%E6%B4%BB/" title="生活">
+                        #生活
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
         </div>
       
-      <div class="post-item" title="Go 中的初始化">
-        <div class="time-m-d">08-07</div>
-        <div class="title">
-          <a href="/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/">
-            <span>Go 中的初始化</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="杂谈——毕业一年">
-        <div class="time-m-d">08-05</div>
-        <div class="title">
-          <a href="/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/">
-            <span>杂谈——毕业一年</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="HashMap 源码阅读">
-        <div class="time-m-d">07-10</div>
-        <div class="title">
-          <a href="/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
-            <span>HashMap 源码阅读</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Chromium 定制开发">
-        <div class="time-m-d">04-01</div>
-        <div class="title">
-          <a href="/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/">
-            <span>Chromium 定制开发</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
-        </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
       
-      <div class="post-item" title="分布式">
-        <div class="time-m-d">12-04</div>
-        <div class="title">
-          <a href="/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/">
-            <span>分布式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java IO">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/JavaIO/">
-            <span>Java IO</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 线程池">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
-            <span>Java 线程池</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="操作系统">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-            <span>操作系统</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="计算机网络">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-            <span>计算机网络</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 类加载过程">
-        <div class="time-m-d">03-28</div>
-        <div class="title">
-          <a href="/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-            <span>Java 类加载过程</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="WebSocket">
-        <div class="time-m-d">03-28</div>
-        <div class="title">
-          <a href="/2022/03/28/WebSocket/">
-            <span>WebSocket</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
-        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A6%BB%E8%81%8C"><span class="toc-text">离职</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">为什么？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E6%B8%A1"><span class="toc-text">过渡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B0%E5%B7%A5%E4%BD%9C"><span class="toc-text">新工作</span></a></li></ol>
       
-      <div class="post-item" title="Java 垃圾回收">
-        <div class="time-m-d">12-29</div>
-        <div class="title">
-          <a href="/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
-            <span>Java 垃圾回收</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 单例模式">
-        <div class="time-m-d">11-04</div>
-        <div class="title">
-          <a href="/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
-            <span>Java 单例模式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 代理模式">
-        <div class="time-m-d">11-03</div>
-        <div class="title">
-          <a href="/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
-            <span>Java 代理模式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 内存区域">
-        <div class="time-m-d">09-07</div>
-        <div class="title">
-          <a href="/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/">
-            <span>Java 内存区域</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="浅谈 LRU 缓存机制算法题">
-        <div class="time-m-d">07-23</div>
-        <div class="title">
-          <a href="/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/">
-            <span>浅谈 LRU 缓存机制算法题</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="LeetCode 刷题记录">
-        <div class="time-m-d">07-09</div>
-        <div class="title">
-          <a href="/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
-            <span>LeetCode 刷题记录</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Spring Boot 集成 Swagger">
-        <div class="time-m-d">07-06</div>
-        <div class="title">
-          <a href="/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/">
-            <span>Spring Boot 集成 Swagger</span>
-          </a>
-        </div>
-      </div>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
   </div>
-</div>
+
 
         
 <div class="footer">

@@ -13,7 +13,7 @@
   
   <title>
     
-      archive_a: 2024 
+      Go 中的初始化 
       
       
       |
@@ -109,199 +109,148 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Go 中的初始化</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2024-08-08 00:31:49
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Go/" title="Go">
+                    #Go
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>Go 语言会在声明变量类型的时候进行初始化，如果没有指定值，那将会使用零值。各种类型的零值：</p>
+<ul>
+<li>int: 0</li>
+<li>float: 0.0</li>
+<li>bool: false</li>
+<li>string: “”</li>
+<li>切片: []</li>
+<li>指针、函数、接口: nil</li>
+<li>结构体: 由属性的零值组成</li>
+</ul>
+<p>需要注意的是，Go 语言中声明（declaration）和定义（definition）都会为变量分配空间。意思是不在需要像 Java 那样必须调用 new 来构造对象。</p>
+<p>举例如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> StructA <span class="keyword">struct</span> &#123;</span><br><span class="line">        A <span class="type">int</span></span><br><span class="line">        B *<span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Inter <span class="keyword">interface</span> &#123;</span><br><span class="line">        Hello(<span class="type">string</span>) <span class="type">error</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> StructB <span class="keyword">struct</span> &#123;</span><br><span class="line">        Int       <span class="type">int</span></span><br><span class="line">        String    <span class="type">string</span></span><br><span class="line">        Struct    StructA</span><br><span class="line">        Point     *StructA</span><br><span class="line">        Array     []<span class="type">int</span></span><br><span class="line">        Fun       <span class="function"><span class="keyword">func</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span> <span class="type">int</span></span><br><span class="line">        Interface Inter</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">var</span> declaration StructB</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Declaration StructB: \n%+v\n&quot;</span>, declaration)</span><br><span class="line">        <span class="keyword">var</span> definition = StructB&#123;Int: <span class="number">3</span>, String: <span class="string">&quot;foo&quot;</span>&#125;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;Definition StructB: \n%+v\n&quot;</span>, definition)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Declaration StructB:</span><br><span class="line">&#123;Int:0 String: Struct:&#123;A:0 B:&lt;nil&gt;&#125; Point:&lt;nil&gt; Array:[] Fun:&lt;nil&gt; Interface:&lt;nil&gt;&#125;</span><br><span class="line">Definition StructB:</span><br><span class="line">&#123;Int:3 String:foo Struct:&#123;A:0 B:&lt;nil&gt;&#125; Point:&lt;nil&gt; Array:[] Fun:&lt;nil&gt; Interface:&lt;nil&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现声明的变量也可以直接使用，并且属性都被赋予了零值。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://go.dev/doc/effective_go#data">Effective Go</a></p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2024-08-08 00:31:49
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Go/" title="Go">
+                        #Go
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="Go 中的初始化">
-        <div class="time-m-d">08-07</div>
-        <div class="title">
-          <a href="/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/">
-            <span>Go 中的初始化</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="杂谈——毕业一年">
-        <div class="time-m-d">08-05</div>
-        <div class="title">
-          <a href="/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/">
-            <span>杂谈——毕业一年</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="HashMap 源码阅读">
-        <div class="time-m-d">07-10</div>
-        <div class="title">
-          <a href="/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
-            <span>HashMap 源码阅读</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Chromium 定制开发">
-        <div class="time-m-d">04-01</div>
-        <div class="title">
-          <a href="/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/">
-            <span>Chromium 定制开发</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
-        </div>
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
       
-      <div class="post-item" title="分布式">
-        <div class="time-m-d">12-04</div>
-        <div class="title">
-          <a href="/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/">
-            <span>分布式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java IO">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/JavaIO/">
-            <span>Java IO</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 线程池">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
-            <span>Java 线程池</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="操作系统">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-            <span>操作系统</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="计算机网络">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-            <span>计算机网络</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 类加载过程">
-        <div class="time-m-d">03-28</div>
-        <div class="title">
-          <a href="/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-            <span>Java 类加载过程</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="WebSocket">
-        <div class="time-m-d">03-28</div>
-        <div class="title">
-          <a href="/2022/03/28/WebSocket/">
-            <span>WebSocket</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
-        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
       
-      <div class="post-item" title="Java 垃圾回收">
-        <div class="time-m-d">12-29</div>
-        <div class="title">
-          <a href="/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
-            <span>Java 垃圾回收</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 单例模式">
-        <div class="time-m-d">11-04</div>
-        <div class="title">
-          <a href="/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
-            <span>Java 单例模式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 代理模式">
-        <div class="time-m-d">11-03</div>
-        <div class="title">
-          <a href="/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
-            <span>Java 代理模式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 内存区域">
-        <div class="time-m-d">09-07</div>
-        <div class="title">
-          <a href="/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/">
-            <span>Java 内存区域</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="浅谈 LRU 缓存机制算法题">
-        <div class="time-m-d">07-23</div>
-        <div class="title">
-          <a href="/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/">
-            <span>浅谈 LRU 缓存机制算法题</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="LeetCode 刷题记录">
-        <div class="time-m-d">07-09</div>
-        <div class="title">
-          <a href="/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
-            <span>LeetCode 刷题记录</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Spring Boot 集成 Swagger">
-        <div class="time-m-d">07-06</div>
-        <div class="title">
-          <a href="/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/">
-            <span>Spring Boot 集成 Swagger</span>
-          </a>
-        </div>
-      </div>
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
     
   </div>
-</div>
+
 
         
 <div class="footer">
