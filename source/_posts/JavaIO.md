@@ -1,5 +1,5 @@
 ---
-title: JavaIO
+title: Java IO
 author: 荀乐
 tags:
   - IO

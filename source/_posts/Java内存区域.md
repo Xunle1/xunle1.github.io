@@ -1,5 +1,5 @@
 ---
-title: Java内存区域
+title: Java 内存区域
 author: 荀乐
 tags:
   - 内存区域

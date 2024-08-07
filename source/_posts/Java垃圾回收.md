@@ -1,5 +1,5 @@
 ---
-title: Java垃圾回收
+title: Java 垃圾回收
 author: 荀乐
 tags:
   - 垃圾回收

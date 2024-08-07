@@ -1,5 +1,5 @@
 ---
-title: Java代理模式
+title: Java 代理模式
 author: 荀乐
 tags:
   - proxy

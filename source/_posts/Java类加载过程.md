@@ -1,5 +1,5 @@
 ---
-title: Java类加载过程
+title: Java 类加载过程
 author: 荀乐
 tags:
   - 类加载

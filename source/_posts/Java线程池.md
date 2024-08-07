@@ -1,5 +1,5 @@
 ---
-title: Java线程池
+title: Java 线程池
 author: 荀乐
 tags:
   - 多线程

@@ -1,16 +1,17 @@
 ---
-title: LeetCode刷题记录
+title: LeetCode 刷题记录
 author: 荀乐
 tags:
   - leetcode
   - 算法
 date: 2021-07-09 14:30:25
 ---
+
 # Leetcode
 
 ## [1. 两数之和](https://leetcode-cn.com/problems/two-sum/)
 
-给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出 **和为目标值** *`target`* 的那 **两个** 整数，并返回它们的数组下标。
+给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出 **和为目标值** _`target`_ 的那 **两个** 整数，并返回它们的数组下标。
 
 **示例 1：**
 
@@ -28,8 +29,8 @@ date: 2021-07-09 14:30:25
 
 **复杂度：**
 
--   时间复杂度：O(n^2)，n为数组长度
--   空间复杂度：O(1)
+- 时间复杂度：O(n^2)，n 为数组长度
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -54,12 +55,12 @@ class Solution {
 
 **2.哈希表**
 
-对于数组中的每一个`x`要找到`target - x`时间复杂度是O(n^2)，如果使用哈希表将数组中的每一个数保存下来，寻找`target - x`的时间复杂度就可以降到O(1)
+对于数组中的每一个`x`要找到`target - x`时间复杂度是 O(n^2)，如果使用哈希表将数组中的每一个数保存下来，寻找`target - x`的时间复杂度就可以降到 O(1)
 
 **复杂度：**
 
--   时间复杂度：O(n)，n为数组长度
--   空间复杂度：O(n)，n为数组长度
+- 时间复杂度：O(n)，n 为数组长度
+- 空间复杂度：O(n)，n 为数组长度
 
 **参考代码**
 
@@ -77,10 +78,6 @@ class Solution {
     }
 }
 ```
-
-
-
-
 
 ---
 
@@ -105,8 +102,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O( (m+n) log(m+n) )，快排的时间复杂度
--   空间复杂度：O( log(m+n) )，快排的空间复杂度
+- 时间复杂度：O( (m+n) log(m+n) )，快排的时间复杂度
+- 空间复杂度：O( log(m+n) )，快排的空间复杂度
 
 **参考代码**
 
@@ -125,12 +122,12 @@ class solution{
 
 **2.双指针法**
 
-方法1没有用到题目中`nums1`和`nums2`有序的性质，可以用两个指针`i、j`分别指向`nums1、nums2`的下标，并根据下标进行比较，但是需要一个新数组保存结果
+方法 1 没有用到题目中`nums1`和`nums2`有序的性质，可以用两个指针`i、j`分别指向`nums1、nums2`的下标，并根据下标进行比较，但是需要一个新数组保存结果
 
 **复杂度：**
 
--   时间复杂度：O(m + n)
--   空间复杂度：O(m + n)
+- 时间复杂度：O(m + n)
+- 空间复杂度：O(m + n)
 
 **参考代码**
 
@@ -148,7 +145,7 @@ class Solution {
                 sorted[i + j] = nums2[j++];
             }
         }
-        
+
         if (i < m) {
             while (i < m) {
                 sorted[i + j] = nums1[i++];
@@ -170,12 +167,12 @@ class Solution {
 
 **3.逆向双指针**
 
-方法2中新建了一个`sorted`数组保存排序结果，但是题目中`nums1`中已经预留了空间，所以可以从大的开始排序，并放入`nums1`的空闲区
+方法 2 中新建了一个`sorted`数组保存排序结果，但是题目中`nums1`中已经预留了空间，所以可以从大的开始排序，并放入`nums1`的空闲区
 
 **复杂度：**
 
--   时间复杂度：O(m + n)
--   空间复杂度：O(1)
+- 时间复杂度：O(m + n)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -206,10 +203,6 @@ class Solution {
 }
 ```
 
-
-
-
-
 ---
 
 ## [53. 最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
@@ -226,9 +219,9 @@ class Solution {
 
 ### 解题思路
 
-假设dp[i]是以nums[i]结尾的最大子序列和，则
+假设 dp[i]是以 nums[i]结尾的最大子序列和，则
 ![](https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210709145452.png)
-最大子序列和max就是dp数组中的最大值
+最大子序列和 max 就是 dp 数组中的最大值
 
 **参考代码**
 
@@ -247,10 +240,6 @@ public int maxSubArray(int[] nums) {
 	return max;
 }
 ```
-
-
-
-
 
 ---
 
@@ -274,8 +263,8 @@ public int maxSubArray(int[] nums) {
 
 **复杂度：**
 
--   时间复杂度：O(n^2)
--   空间复杂度：O(1)
+- 时间复杂度：O(n^2)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -303,12 +292,12 @@ class Solution {
 
 **2.双指针**
 
-如果存在`nums[i] = nums[j]`，则对于 $$i \leq k \leq j$$ 有`nums[i] = nums[k] = nums[j]`，即相等的元素下标一定连续。通过维护`slow`和`fast`快慢指针，可以将空间复杂度降低到O(n)
+如果存在`nums[i] = nums[j]`，则对于 $$i \leq k \leq j$$ 有`nums[i] = nums[k] = nums[j]`，即相等的元素下标一定连续。通过维护`slow`和`fast`快慢指针，可以将空间复杂度降低到 O(n)
 
 **复杂度：**
 
--   时间复杂度：O(n)
--   空间复杂度：O(1)
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -353,8 +342,6 @@ class Solution {
 }
 ```
 
-
-
 ---
 
 ## [350. 两个数组的交集 II](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/)
@@ -372,12 +359,12 @@ class Solution {
 
 **1.哈希表**
 
-对`nums1`和`nums2`创建两个哈希表`map1`和`map2`，以数组中出现的数字为Key，出现的次数为value，如果两个表存在相同的`key`值，则返回较小的`value`，此`value`就是两个数组中`key`的交集
+对`nums1`和`nums2`创建两个哈希表`map1`和`map2`，以数组中出现的数字为 Key，出现的次数为 value，如果两个表存在相同的`key`值，则返回较小的`value`，此`value`就是两个数组中`key`的交集
 
 **复杂度**
 
--   时间复杂度：O(n + m)
--   空间复杂度：O(n + m)
+- 时间复杂度：O(n + m)
+- 空间复杂度：O(n + m)
 
 **参考代码**
 
@@ -433,8 +420,8 @@ class Solution {
 
 **复杂度**
 
--   时间复杂度：O(n + m)
--   空间复杂度：O($$min\lbrace n,m\rbrace$$)
+- 时间复杂度：O(n + m)
+- 空间复杂度：O($$min\lbrace n,m\rbrace$$)
 
 ```java
 class Solution {
@@ -470,10 +457,6 @@ class Solution {
 }
 ```
 
-
-
-
-
 ---
 
 ## [121. 买卖股票的最佳时机](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
@@ -501,8 +484,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O(n^2)
--   空间复杂度：O(1)
+- 时间复杂度：O(n^2)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -523,19 +506,15 @@ class Solution {
 }
 ```
 
-
-
-
-
 ---
 
 **2.单调栈**
 
 维护一个单调栈
 
--   入栈元素大于等于栈顶元素时，直接入栈
--   入栈元素小于栈顶元素时，将栈顶弹出，并计算它与栈底元素的差值，直到找到一个元素小于等于入栈元素
--   在数组最后设置一个哨兵，为了使栈中元素得到计算
+- 入栈元素大于等于栈顶元素时，直接入栈
+- 入栈元素小于栈顶元素时，将栈顶弹出，并计算它与栈底元素的差值，直到找到一个元素小于等于入栈元素
+- 在数组最后设置一个哨兵，为了使栈中元素得到计算
 
 第二条可以这样理解，栈顶元素为`a`，入栈元素为`b`，当`b`入栈时，之后入栈的元素`C`一定存在 $$C-b > C-a$$
 
@@ -543,8 +522,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O(n)
--   空间复杂度：O(n)
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
 
 **参考代码**
 
@@ -581,8 +560,6 @@ class Solution {
 }
 ```
 
-
-
 ---
 
 **3.一次遍历**
@@ -591,8 +568,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O(n)
--   空间复杂度：O(1)
+- 时间复杂度：O(n)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -615,10 +592,6 @@ class Solution {
 }
 ```
 
-
-
-
-
 ---
 
 ## [566. 重塑矩阵](https://leetcode-cn.com/problems/reshape-the-matrix/)
@@ -632,24 +605,24 @@ class Solution {
 **示例 1:**
 
 ```
-输入: 
-nums = 
+输入:
+nums =
 [[1,2],
  [3,4]]
 r = 1, c = 4
-输出: 
+输出:
 [[1,2,3,4]]
 ```
 
 **示例 2:**
 
 ```
-输入: 
-nums = 
+输入:
+nums =
 [[1,2],
  [3,4]]
 r = 2, c = 4
-输出: 
+输出:
 [[1,2],
  [3,4]]
 ```
@@ -662,8 +635,8 @@ r = 2, c = 4
 
 **复杂度**
 
--   时间复杂度：O(m * n)
--   空间复杂度：O(m * n)
+- 时间复杂度：O(m \* n)
+- 空间复杂度：O(m \* n)
 
 **参考代码**
 
@@ -674,7 +647,7 @@ class Solution {
         if (total != r * c) {
             return mat;
         }
-		
+
         int[] source = new int[total];
         int k = 0;
         for (int i = 0; i < mat.length; i++) {
@@ -712,8 +685,8 @@ $$ \begin{cases} i = x ~/~n \\ j = x \% n \end{cases}$$ ，
 
 **复杂度：**
 
--   时间复杂度：O(m * n)
--   空间复杂度：O(1)
+- 时间复杂度：O(m \* n)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -737,10 +710,6 @@ class Solution {
 }
 ```
 
-
-
-
-
 ---
 
 ## [118. 杨辉三角](https://leetcode-cn.com/problems/pascals-triangle/)
@@ -757,8 +726,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O(numRows ^ 2)
--   空间复杂度：O(1)
+- 时间复杂度：O(numRows ^ 2)
+- 空间复杂度：O(1)
 
 **参考代码**
 
@@ -787,8 +756,6 @@ class Solution {
 }
 ```
 
-
-
 ---
 
 ## [387. 字符串中的第一个唯一字符](https://leetcode-cn.com/problems/first-unique-character-in-a-string/)
@@ -813,8 +780,8 @@ s = "loveleetcode"
 
 **复杂度**
 
--   时间复杂度：O(n)，n为`s`长度，遍历两次
--   空间复杂度：O(1)，需要一个26个字母的字典
+- 时间复杂度：O(n)，n 为`s`长度，遍历两次
+- 空间复杂度：O(1)，需要一个 26 个字母的字典
 
 **参考代码**
 
@@ -829,13 +796,11 @@ class Solution {
         for(int i = 0; i < s.length(); i++) {
             if (table[s.charAt(i) - 'a'] == 1) return i;
         }
-        
+
         return -1;
     }
 }
 ```
-
-
 
 ---
 
@@ -845,9 +810,9 @@ class Solution {
 
 假设一个二叉搜索树具有如下特征：
 
--   节点的左子树只包含**小于**当前节点的数。
--   节点的右子树只包含**大于**当前节点的数。
--   所有左子树和右子树自身必须也是二叉搜索树。
+- 节点的左子树只包含**小于**当前节点的数。
+- 节点的右子树只包含**大于**当前节点的数。
+- 所有左子树和右子树自身必须也是二叉搜索树。
 
 ### 解题思路
 
@@ -857,8 +822,8 @@ class Solution {
 
 **复杂度**
 
--   时间复杂度：O(n)
--   空间复杂度：O(n)
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
 
 **参考代码**
 
@@ -868,7 +833,7 @@ class Solution{
         Long lower = Long.MIN_VALUE, upper = Long.MAX_VALUE;
         return isValid(root, lower, upper);
     }
-    
+
     public boolean isValid(TreeNode root, long lower, long upper) {
         if (root == null) return true;
         if (root.val <= lower || root.val >= upper) return false;
@@ -886,8 +851,8 @@ class Solution{
 
 **复杂度**
 
--   时间复杂度：O(n)
--   空间复杂度：O(n)
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
 
 **参考代码**
 
@@ -915,7 +880,7 @@ class Solution{
     public boolean isValidBST(TreeNode root) {
         LinkedList<TreeNode> stack = new LinkedList<>();
         long pre = Long.MIN_VALUE;
-        
+
         while(!stack.isEmpty() || root != null) {
             while (root != null) {
                 stack.push(root);
@@ -931,11 +896,9 @@ class Solution{
 }
 ```
 
-
-
 ---
 
-## [230. 二叉搜索树中第K小的元素](https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/)
+## [230. 二叉搜索树中第 K 小的元素](https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/)
 
 给定一个二叉搜索树的根节点 `root` ，和一个整数 `k` ，请你设计一个算法查找其中第 `k` 个最小元素（从 1 开始计数）。
 
@@ -961,9 +924,9 @@ class Solution{
 
 **二叉搜索树(BST)**的特点：
 
--   每个节点的左儿子比父节点小，右儿子比父节点大
--   每个节点的左子树和右子树也是二叉搜索树
--   二叉搜索树中序遍历的序列是一个升序序列
+- 每个节点的左儿子比父节点小，右儿子比父节点大
+- 每个节点的左子树和右子树也是二叉搜索树
+- 二叉搜索树中序遍历的序列是一个升序序列
 
 为了找到树中第`K`小的元素，可以按照中序遍历得到升序序列，第`k-1`个元素就是第`k`小的节点
 
@@ -971,8 +934,8 @@ class Solution{
 
 **复杂度：**
 
--   时间复杂度：O(n)
--   空间复杂度：O(n)
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
 
 **参考代码：**
 
@@ -982,7 +945,7 @@ class Solution{
 class Solution{
     public int kthSmallest(TreeNode root, int k) {
     	LinkedList<TreeNode> stack = new LinkedList<>();
-        
+
         //中序遍历所有节点
         while (true) {
             while (root != null) {
@@ -1022,10 +985,6 @@ class Solution {
 }
 ```
 
-
-
-
-
 ---
 
 ## [538. 把二叉搜索树转换为累加树](https://leetcode-cn.com/problems/convert-bst-to-greater-tree/)
@@ -1047,8 +1006,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O(n)
--   空间复杂度：O(n)
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)
 
 **参考代码：**
 
@@ -1058,7 +1017,7 @@ class Solution{
         traverse(root);
         return root;
     }
-    
+
     int sum = 0;
     public void traverse(TreeNode root) {
         if (root == null) return ;
@@ -1070,8 +1029,6 @@ class Solution{
     }
 }
 ```
-
-
 
 ---
 
@@ -1107,7 +1064,7 @@ public ListNode reverseList(ListNode head) {
 	ListNode pre = null;
 	ListNode cur = head;
 	ListNode nxt = cur;
-	
+
 	while (cur != null) {
 		nxt = cur.next;
 		cur.next = pre;
@@ -1120,8 +1077,6 @@ public ListNode reverseList(ListNode head) {
 
 **2.递归**
 
-
-
 **参考代码：**
 
 ```java
@@ -1133,8 +1088,6 @@ public ListNode reverseList(ListNode head) {
     return last;
 }
 ```
-
-
 
 ---
 
@@ -1153,12 +1106,10 @@ public ListNode reverseList(ListNode head) {
 
 ### 解题思路
 
--   先找到反转开始节点`leftNode`，保存反转开始节点的前一个节点`prev`。
--   反转`[leftNode，rightNode]`，保存`rightNode`的下一个节点`next`。
--   `prev.next`指向`rightNode`，`leftNode.next`指向`next`。
--   返回头节点
-
-
+- 先找到反转开始节点`leftNode`，保存反转开始节点的前一个节点`prev`。
+- 反转`[leftNode，rightNode]`，保存`rightNode`的下一个节点`next`。
+- `prev.next`指向`rightNode`，`leftNode.next`指向`next`。
+- 返回头节点
 
 **参考代码**
 
@@ -1176,9 +1127,9 @@ class Solution {
             prev = leftNode;
             leftNode = leftNode.next;
         }
-        
+
         //反转链表
-        ListNode pre = prev, cur = leftNode, nxt = cur; 
+        ListNode pre = prev, cur = leftNode, nxt = cur;
         while (left <= right && cur != null) {
             nxt = cur.next;
             cur.next = pre;
@@ -1191,12 +1142,10 @@ class Solution {
         prev.next = pre;
         leftNode.next = next;
 
-        return dummy.next; 
+        return dummy.next;
     }
 }
 ```
-
-
 
 ---
 
@@ -1206,7 +1155,7 @@ class Solution {
 
 如果一个链表是回文，那么链表节点序列从前往后看和从后往前看是相同的。
 
- **示例 1：**
+**示例 1：**
 
 ![img](https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211102135326.png)
 
@@ -1223,8 +1172,8 @@ class Solution {
 
 **复杂度：**
 
--   时间复杂度：O(n)
--   空间复杂度：O(n)或者O(1)，取决于使用递归还是迭代
+- 时间复杂度：O(n)
+- 空间复杂度：O(n)或者 O(1)，取决于使用递归还是迭代
 
 **参考代码：**
 
@@ -1246,7 +1195,7 @@ public boolean isPalindrome(ListNode head) {
 	}
 	return true;
 }
-	
+
 //递归反转链表
 public ListNode reverse(ListNode head) {
 	if (head.next == null) return head;
@@ -1256,8 +1205,6 @@ public ListNode reverse(ListNode head) {
 	return ret;
 }
 ```
-
-
 
 ---
 
@@ -1273,12 +1220,12 @@ public ListNode reverse(ListNode head) {
 
 **1.哈希集合**
 
-将单链表A中的节点放入集合中，遍历单链表B判断集合中是否存在相交节点
+将单链表 A 中的节点放入集合中，遍历单链表 B 判断集合中是否存在相交节点
 
 **复杂度：**
 
--   时间复杂度：O(m+n)
--   空间复杂度：O(m)
+- 时间复杂度：O(m+n)
+- 空间复杂度：O(m)
 
 **参考代码：**
 
@@ -1299,30 +1246,30 @@ public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 
 **2.双指针**
 
-定义两个指针`pA`和`pB`分别指向单链表A和B的头部。则会出现三种情况：
+定义两个指针`pA`和`pB`分别指向单链表 A 和 B 的头部。则会出现三种情况：
 
-1.  两个链表有交点，且A和B的头节点到交点步数相同
+1.  两个链表有交点，且 A 和 B 的头节点到交点步数相同
 
     ![image.png](https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211102151431.png)
 
     则易得`pA`和`pB`第一次遍历到达交点
 
-2.  两个链表有交点，但A和B的头节点到交点步数不同
+2.  两个链表有交点，但 A 和 B 的头节点到交点步数不同
 
     ![image.png](https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211102151454.png)
 
-    当`pA`遍历完A链表后继续遍历B，经过**a+c+b**步到达交点；同样的`pB`经过`b+c+a`步到达交点。
+    当`pA`遍历完 A 链表后继续遍历 B，经过**a+c+b**步到达交点；同样的`pB`经过`b+c+a`步到达交点。
 
 3.  两个链表没有交点。
 
     ![image.png](https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20211102152034.png)
 
-    `pA`和`pB`最终都指向null，但经过的步数也是相同的。
+    `pA`和`pB`最终都指向 null，但经过的步数也是相同的。
 
 **复杂度：**
 
--   时间复杂度：O(m+n)
--   空间复杂度：O(1)
+- 时间复杂度：O(m+n)
+- 空间复杂度：O(1)
 
 **参考代码：**
 
@@ -1340,15 +1287,13 @@ public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
 }
 ```
 
-
-
 ---
 
 ## [剑指 Offer 25. 合并两个排序的链表](https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)
 
 输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
 
-**示例1：**
+**示例 1：**
 
 ```
 输入：1->2->4, 1->3->4
@@ -1386,8 +1331,6 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 }
 ```
 
-
-
 ---
 
 ## [1171. 从链表中删去总和值为零的连续节点](https://leetcode-cn.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/)
@@ -1406,7 +1349,7 @@ public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
 ### 解题思路
 
-定义两个指针`pre`和`p`，`pre`用于保存节点方便删除区间，`p`遍历链表找到前缀和为0的节点将其删去。
+定义两个指针`pre`和`p`，`pre`用于保存节点方便删除区间，`p`遍历链表找到前缀和为 0 的节点将其删去。
 
 `pre`一开始指向伪头节点，只有当`p`走到结尾时才移动到下一个节点，而每当`p`走到前缀和`sum=0`时，更新`pre`的指向`pre.next = p.next`
 
@@ -1442,8 +1385,6 @@ public class Solution{
 }
 ```
 
-
-
 ---
 
 ## [232. 用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
@@ -1456,8 +1397,8 @@ public class Solution{
 
 可以将一个栈设置为**入队栈**，入队元素都进入这个栈；另一个栈为**出队栈**。
 
--   **入队：入队栈**直接`push`
--   **出队：**当**出队栈**为空时，需要将**入队栈**中的元素一个一个`pop`到**出队栈**中，这样可以保证**入队栈**中最后进入的元素被`push`到**出队栈的底部**，最先进入的元素进入**出队栈**的头部；当**出队栈**不为空时，出队栈直接`pop`。
+- **入队：入队栈**直接`push`
+- **出队：**当**出队栈**为空时，需要将**入队栈**中的元素一个一个`pop`到**出队栈**中，这样可以保证**入队栈**中最后进入的元素被`push`到**出队栈的底部**，最先进入的元素进入**出队栈**的头部；当**出队栈**不为空时，出队栈直接`pop`。
 
 **示例代码：**
 
@@ -1465,7 +1406,7 @@ public class Solution{
 class MyQueue {
 	Stack<Integer> inStack;
     Stack<Integer> outStack;
-    
+
     public MyQueue() {
 		inStack = new Stack<>();
         outStack = new Stack<>();
@@ -1498,10 +1439,6 @@ class MyQueue {
     }
 }
 ```
-
-
-
-
 
 ---
 

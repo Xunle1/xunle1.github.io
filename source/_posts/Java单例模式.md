@@ -1,5 +1,5 @@
 ---
-title: Java单例模式
+title: Java 单例模式
 author: 荀乐
 tags:
   - singleton
