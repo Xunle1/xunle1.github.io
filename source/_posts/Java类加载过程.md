@@ -1,6 +1,7 @@
 ---
 title: Java 类加载过程
 author: 荀乐
+categories: 技术
 tags:
   - 类加载
   - JVM

@@ -1,6 +1,7 @@
 ---
 title: LeetCode 刷题记录
 author: 荀乐
+categories: 算法题
 tags:
   - leetcode
   - 算法

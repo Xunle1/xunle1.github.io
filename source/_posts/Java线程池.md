@@ -1,6 +1,7 @@
 ---
 title: Java 线程池
 author: 荀乐
+categories: 技术
 tags:
   - 多线程
   - 并发

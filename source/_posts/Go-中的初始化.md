@@ -1,6 +1,7 @@
 ---
 title: Go 中的初始化
 date: 2024-08-07 19:22:31
+categories: 技术
 tags:
   - Go
 ---
