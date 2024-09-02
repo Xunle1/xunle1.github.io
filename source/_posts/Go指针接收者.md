@@ -1,8 +1,8 @@
 ---
 title: Go 指针接收者
+categories: Go
 tags:
   - Go
-categories: 技术
 date: 2024-09-02 14:09:31
 ---
 
@@ -38,7 +38,7 @@ func (t *Type) methodMame(params) returns {
 
 ## 实例
 
-举例来说，声明一个结构体 `Vertex`，为 `Vertex` 绑定方法 `Abs`、`Scale` 和 `Shrink`，其中 `Abs`、`Shrink` 方法使用值接收者，`Scale` 方法使用指针接收者。
+举例来说，声明一个结构体`Vertex`，为`Vertex`绑定方法`Abs`、`Scale`和`Shrink`，其中`Abs`、`Shrink`方法使用值接收者，`Scale`方法使用指针接收者。
 
 ```go
 import (
@@ -85,11 +85,11 @@ func main() {
 50
 ```
 
-可以看到，`Abs` 和 `Shrink` 方法使用值接收者，所以 `Abs` 和 `Shrink` 方法内部对 `v` 的修改不会影响原来的 `v`。
+可以看到，`Abs`和`Shrink`方法使用值接收者，所以`Abs`和`Shrink`方法内部对`v`的修改不会影响原来的`v`。
 
-而 `Scale` 方法使用指针接收者，所以 `Scale` 方法内部对 `v` 的修改会影响原来的 `v`。
+而`Scale`方法使用指针接收者，所以`Scale`方法内部对`v`的修改会影响原来的`v`。
 
-如果将 `Shrink` 方法的接收者类型改为指针接收者：
+如果将`Shrink`方法的接收者类型改为指针接收者：
 
 ```go
 func (v *Vertex) Shrink(f float64) {
@@ -98,7 +98,7 @@ func (v *Vertex) Shrink(f float64) {
         }
         v.X = v.X / 10
         v.Y = v.Y / 10
-}       
+}
 ```
 
 结果为：
