@@ -6,7 +6,7 @@
   <link href="https://xunle1.github.io/atom.xml" rel="self"/>
   
   <link href="https://xunle1.github.io/"/>
-  <updated>2024-09-02T09:22:25.168Z</updated>
+  <updated>2024-09-02T09:39:14.881Z</updated>
   <id>https://xunle1.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go init 函数顺序（转）</title>
+    <link href="https://xunle1.github.io/2024/09/02/Go-init%E5%87%BD%E6%95%B0%E9%A1%BA%E5%BA%8F/"/>
+    <id>https://xunle1.github.io/2024/09/02/Go-init%E5%87%BD%E6%95%B0%E9%A1%BA%E5%BA%8F/</id>
+    <published>2024-09-02T09:31:28.000Z</published>
+    <updated>2024-09-02T09:39:14.881Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;转自&lt;a href=&quot;https://cloud.tencent.com/developer/article/2138066&quot;&gt;一文读懂 Golang init 函数执行顺序&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Go 语言中，&lt;code&gt;init&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Go" scheme="https://xunle1.github.io/categories/Go/"/>
+    
+    
+    <category term="Go" scheme="https://xunle1.github.io/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>Go 具名返回值</title>
@@ -538,35 +564,6 @@
     <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
     
     <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot 集成 Swagger</title>
-    <link href="https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/"/>
-    <id>https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/</id>
-    <published>2021-07-06T05:39:26.000Z</published>
-    <updated>2024-09-02T03:37:44.568Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;SpringBoot集成Swagger&quot;&gt;&lt;a href=&quot;#SpringBoot集成Swagger&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
-    
-    <category term="Swagger" scheme="https://xunle1.github.io/tags/Swagger/"/>
-    
-    <category term="SpringBoot" scheme="https://xunle1.github.io/tags/SpringBoot/"/>
     
   </entry>
   

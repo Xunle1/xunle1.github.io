@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Go init 函数顺序（转）</title>
+      <link href="/2024/09/02/Go-init%E5%87%BD%E6%95%B0%E9%A1%BA%E5%BA%8F/"/>
+      <url>/2024/09/02/Go-init%E5%87%BD%E6%95%B0%E9%A1%BA%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<p>转自<a href="https://cloud.tencent.com/developer/article/2138066">一文读懂 Golang init 函数执行顺序</a></p><p>Go 语言中，<code>init</code> 函数用于在程序启动时执行初始化操作。每个包都可以包含一个 <code>init</code> 函数，Go 会按顺序执行所有包的 <code>init</code> 函数。</p><p>以下为 <code>init</code> 函数的执行顺序一图流：</p><p><img src="https://xunle-picture-bed.oss-cn-hangzhou.aliyuncs.com/init-sequence.png" alt="init 函数执行顺序"></p><p>程序中如果在不同包的不同源文件有多个 init 函数时，其执行顺序可概述为：</p><ul><li>同一个源文件的 init 函数执行顺序与其定义顺序一致，从上到下；</li><li>同一个包中不同文件的 init 函数的执行顺序按照文件名的字典序；</li><li>对于不同的包，如果不相互依赖的话，按照 main 包中 import 的顺序调用其包中的 init 函数；</li><li>如果包存在依赖，不同包的 init 函数按照包导入的依赖关系决定执行顺序。 调用顺序为最后被依赖的最先被初始化，如导入顺序 main &gt; a &gt; b &gt; c，则初始化顺序为 c &gt; b &gt; a &gt; main，依次执行对应的 init 方法；</li><li>如果包存在包级变量，则先于包的 init 函数完成初始化。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Go </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Go </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Go 具名返回值</title>
       <link href="/2024/09/02/Go%E5%85%B7%E5%90%8D%E8%BF%94%E5%9B%9E%E5%80%BC/"/>
       <url>/2024/09/02/Go%E5%85%B7%E5%90%8D%E8%BF%94%E5%9B%9E%E5%80%BC/</url>

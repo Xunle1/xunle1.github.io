@@ -13,7 +13,7 @@
   
   <title>
     
-      archive_a: 2022/12 
+      Go init 函数顺序（转） 
       
       
       |
@@ -113,226 +113,146 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Go init 函数顺序（转）</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2024-09-02 17:39:14
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/Go/" title="Go">
+                    <b>#</b> Go
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/Go/" title="Go">
+                    #Go
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>转自<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2138066">一文读懂 Golang init 函数执行顺序</a></p>
+<p>Go 语言中，<code>init</code> 函数用于在程序启动时执行初始化操作。每个包都可以包含一个 <code>init</code> 函数，Go 会按顺序执行所有包的 <code>init</code> 函数。</p>
+<p>以下为 <code>init</code> 函数的执行顺序一图流：</p>
+<p><img src="https://xunle-picture-bed.oss-cn-hangzhou.aliyuncs.com/init-sequence.png" alt="init 函数执行顺序"></p>
+<p>程序中如果在不同包的不同源文件有多个 init 函数时，其执行顺序可概述为：</p>
+<ul>
+<li>同一个源文件的 init 函数执行顺序与其定义顺序一致，从上到下；</li>
+<li>同一个包中不同文件的 init 函数的执行顺序按照文件名的字典序；</li>
+<li>对于不同的包，如果不相互依赖的话，按照 main 包中 import 的顺序调用其包中的 init 函数；</li>
+<li>如果包存在依赖，不同包的 init 函数按照包导入的依赖关系决定执行顺序。 调用顺序为最后被依赖的最先被初始化，如导入顺序 main &gt; a &gt; b &gt; c，则初始化顺序为 c &gt; b &gt; a &gt; main，依次执行对应的 init 方法；</li>
+<li>如果包存在包级变量，则先于包的 init 函数完成初始化。</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2024/09/02/Go%E5%85%B7%E5%90%8D%E8%BF%94%E5%9B%9E%E5%80%BC/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2024-09-02 17:39:14
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/Go/" title="Go">
+                        <b>#</b> Go
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/Go/" title="Go">
+                        #Go
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
         </div>
       
-      <div class="post-item" title="Go init 函数顺序（转）">
-        <div class="time-m-d">09-02</div>
-        <div class="title">
-          <a href="/2024/09/02/Go-init%E5%87%BD%E6%95%B0%E9%A1%BA%E5%BA%8F/">
-            <span>Go init 函数顺序（转）</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="Go 具名返回值">
-        <div class="time-m-d">09-02</div>
-        <div class="title">
-          <a href="/2024/09/02/Go%E5%85%B7%E5%90%8D%E8%BF%94%E5%9B%9E%E5%80%BC/">
-            <span>Go 具名返回值</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Go 指针接收者">
-        <div class="time-m-d">09-02</div>
-        <div class="title">
-          <a href="/2024/09/02/Go%E6%8C%87%E9%92%88%E6%8E%A5%E6%94%B6%E8%80%85/">
-            <span>Go 指针接收者</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Go 中的初始化">
-        <div class="time-m-d">08-07</div>
-        <div class="title">
-          <a href="/2024/08/07/Go%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/">
-            <span>Go 中的初始化</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="杂谈——毕业一年">
-        <div class="time-m-d">08-05</div>
-        <div class="title">
-          <a href="/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/">
-            <span>杂谈——毕业一年</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="HashMap 源码阅读">
-        <div class="time-m-d">07-10</div>
-        <div class="title">
-          <a href="/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
-            <span>HashMap 源码阅读</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Chromium 定制开发">
-        <div class="time-m-d">04-01</div>
-        <div class="title">
-          <a href="/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/">
-            <span>Chromium 定制开发</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2022</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="分布式">
-        <div class="time-m-d">12-04</div>
-        <div class="title">
-          <a href="/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/">
-            <span>分布式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java IO">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/JavaIO/">
-            <span>Java IO</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 线程池">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
-            <span>Java 线程池</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="操作系统笔记">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-            <span>操作系统笔记</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="计算机网络笔记">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
-            <span>计算机网络笔记</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 类加载过程">
-        <div class="time-m-d">03-28</div>
-        <div class="title">
-          <a href="/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/">
-            <span>Java 类加载过程</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="WebSocket">
-        <div class="time-m-d">03-28</div>
-        <div class="title">
-          <a href="/2022/03/28/WebSocket/">
-            <span>WebSocket</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2021</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="Java 垃圾回收">
-        <div class="time-m-d">12-29</div>
-        <div class="title">
-          <a href="/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/">
-            <span>Java 垃圾回收</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 单例模式">
-        <div class="time-m-d">11-04</div>
-        <div class="title">
-          <a href="/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
-            <span>Java 单例模式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 代理模式">
-        <div class="time-m-d">11-03</div>
-        <div class="title">
-          <a href="/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
-            <span>Java 代理模式</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Java 内存区域">
-        <div class="time-m-d">09-07</div>
-        <div class="title">
-          <a href="/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/">
-            <span>Java 内存区域</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="浅谈 LRU 缓存机制算法题">
-        <div class="time-m-d">07-23</div>
-        <div class="title">
-          <a href="/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/">
-            <span>浅谈 LRU 缓存机制算法题</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="LeetCode 刷题记录">
-        <div class="time-m-d">07-09</div>
-        <div class="title">
-          <a href="/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">
-            <span>LeetCode 刷题记录</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="Spring Boot 集成 Swagger">
-        <div class="time-m-d">07-06</div>
-        <div class="title">
-          <a href="/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/">
-            <span>Spring Boot 集成 Swagger</span>
-          </a>
-        </div>
-      </div>
+
     
   </div>
-</div>
+
 
         
 <div class="footer">
