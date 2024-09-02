@@ -162,7 +162,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-          2024-09-02 15:13:47
+          2024-09-02 17:22:25
         </span>
         
               <span class="post-categories">
@@ -189,10 +189,10 @@
           
       </div>
       <div class="markdown-body">
-        <p>Go 语言可以对方法的返回值命名，返回值会被自动被初始化为零值而不需要你的处理，同时也可以使用“裸”返回语句。以下是 <a target="_blank" rel="noopener" href="https://go.dev/tour/basics/7">A Tour of Go</a> 中的例子：</p>
+        <p>Go 语言可以对函数的返回值命名，返回值会被自动被初始化为零值而不需要你的处理，同时也可以使用“裸”返回语句。以下是 <a target="_blank" rel="noopener" href="https://go.dev/tour/basics/7">A Tour of Go</a> 中的例子：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">split</span><span class="params">(sum <span class="type">int</span>)</span></span> (x, y <span class="type">int</span>) &#123;</span><br><span class="line">	x = sum * <span class="number">3</span> / <span class="number">9</span></span><br><span class="line">	y = sum - x</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(split(<span class="number">10</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="什么时候使用"><a href="#什么时候使用" class="headerlink" title="什么时候使用"></a>什么时候使用</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/effective_go#named-results">Effective Go</a> 中主要说明了<strong>具名返回值</strong>可以提高方法的可读性。特别是在返回值类型相同的情况下，比如一个返回经纬度的方法：</p>
+<h2 id="什么时候使用"><a href="#什么时候使用" class="headerlink" title="什么时候使用"></a>什么时候使用</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/effective_go#named-results">Effective Go</a> 中主要说明了<strong>具名返回值</strong>可以提高函数的可读性。特别是在返回值类型相同的情况下，比如一个返回经纬度的函数：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">location</span><span class="params">(name City)</span></span> (lat, long <span class="type">float64</span>)</span><br></pre></td></tr></table></figure>
 
 <p>我们可以从返回值列表中知道经度和纬度分别对应第几个参数。</p>
@@ -223,7 +223,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-              2024-09-02 15:13:47
+              2024-09-02 17:22:25
             </span>
             
                   <span class="post-categories">
