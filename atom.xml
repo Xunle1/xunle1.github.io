@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>xunle&#39;s blog</title>
+  <icon>https://xunle1.github.io/icon.png</icon>
+  
+  <link href="https://xunle1.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://xunle1.github.io/"/>
+  <updated>2024-09-02T06:09:37.797Z</updated>
+  <id>https://xunle1.github.io/</id>
+  
+  <author>
+    <name>荀乐</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go 指针接收者</title>
+    <link href="https://xunle1.github.io/2024/09/02/Go%E6%8C%87%E9%92%88%E6%8E%A5%E6%94%B6%E8%80%85/"/>
+    <id>https://xunle1.github.io/2024/09/02/Go%E6%8C%87%E9%92%88%E6%8E%A5%E6%94%B6%E8%80%85/</id>
+    <published>2024-09-02T06:09:31.000Z</published>
+    <updated>2024-09-02T06:09:37.797Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Go 语言中可以对方法声明&lt;strong&gt;接收者&lt;/strong&gt;，接收者类型可以是结构体也可以是接口。这意味着被声明的方法只能被该结构体或者是接口的实例调用。&lt;/p&gt;
+&lt;p&gt;语法如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Go" scheme="https://xunle1.github.io/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Go 中的初始化</title>
+    <link href="https://xunle1.github.io/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
+    <id>https://xunle1.github.io/2024/08/07/Go-%E4%B8%AD%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96/</id>
+    <published>2024-08-07T11:22:31.000Z</published>
+    <updated>2024-09-02T03:36:47.465Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Go 语言会在声明变量类型的时候进行初始化，如果没有指定值，那将会使用零值。各种类型的零值：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int: 0&lt;/li&gt;
+&lt;li&gt;float: 0.0&lt;/li&gt;
+&lt;li&gt;bool: false&lt;/li&gt;
+&lt;li&gt;string:</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Go" scheme="https://xunle1.github.io/tags/Go/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>杂谈——毕业一年</title>
+    <link href="https://xunle1.github.io/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/"/>
+    <id>https://xunle1.github.io/2024/08/05/%E6%9D%82%E8%B0%88%E2%80%94%E2%80%94%E6%AF%95%E4%B8%9A%E4%B8%80%E5%B9%B4/</id>
+    <published>2024-08-04T16:12:03.000Z</published>
+    <updated>2024-09-02T03:36:39.227Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;从 CQUPT 毕业一年时间，身份从学生转换到打工人也已经一年时间。一年以来关于生活关于工作可能在生活上有许多想法，但都只是在脑海中绕了一圈，有的消失了，有的还留着。所以想用文字记录下当下的想法。&lt;/p&gt;
+&lt;h1 id=&quot;离职&quot;&gt;&lt;a href=&quot;#离职&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://xunle1.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="杂谈" scheme="https://xunle1.github.io/tags/%E6%9D%82%E8%B0%88/"/>
+    
+    <category term="生活" scheme="https://xunle1.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HashMap 源码阅读</title>
+    <link href="https://xunle1.github.io/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"/>
+    <id>https://xunle1.github.io/2024/07/10/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</id>
+    <published>2024-07-10T13:16:34.000Z</published>
+    <updated>2024-09-02T03:36:51.939Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文为阅读 HashMap 源码的笔记，主要了解 HashMap 增删改查的过程。&lt;/p&gt;
+&lt;p&gt;文中代码和描述基于 openjdk 17，HashMap 底层数据结构采用 &lt;code&gt;Node&lt;/code&gt; 数组 + 链表 + 红黑树。&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="HashMap" scheme="https://xunle1.github.io/tags/HashMap/"/>
+    
+    <category term="源码" scheme="https://xunle1.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chromium 定制开发</title>
+    <link href="https://xunle1.github.io/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/"/>
+    <id>https://xunle1.github.io/2024/04/01/Chromium-%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91/</id>
+    <published>2024-04-01T10:29:06.000Z</published>
+    <updated>2024-09-02T03:33:06.470Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文用于记录在工作中对 Chromium 的定制化开发。基于 84 版本 Chromium 浏览器。&lt;/p&gt;
+&lt;h1 id=&quot;功能&quot;&gt;&lt;a href=&quot;#功能&quot; class=&quot;headerlink&quot; title=&quot;功能&quot;&gt;&lt;/a&gt;功能&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Chromium" scheme="https://xunle1.github.io/tags/Chromium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式</title>
+    <link href="https://xunle1.github.io/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    <id>https://xunle1.github.io/2022/12/04/%E5%88%86%E5%B8%83%E5%BC%8F/</id>
+    <published>2022-12-04T13:43:18.000Z</published>
+    <updated>2024-09-02T03:36:07.570Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;分布式&quot;&gt;&lt;a href=&quot;#分布式&quot; class=&quot;headerlink&quot; title=&quot;分布式&quot;&gt;&lt;/a&gt;分布式&lt;/h1&gt;&lt;h2 id=&quot;CAP&quot;&gt;&lt;a href=&quot;#CAP&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="概述" scheme="https://xunle1.github.io/tags/%E6%A6%82%E8%BF%B0/"/>
+    
+    <category term="分布式" scheme="https://xunle1.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java IO</title>
+    <link href="https://xunle1.github.io/2022/03/29/JavaIO/"/>
+    <id>https://xunle1.github.io/2022/03/29/JavaIO/</id>
+    <published>2022-03-28T17:11:43.000Z</published>
+    <updated>2024-09-02T03:37:28.193Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;JavaNIO&quot;&gt;&lt;a href=&quot;#JavaNIO&quot; class=&quot;headerlink&quot; title=&quot;JavaNIO&quot;&gt;&lt;/a&gt;JavaNIO&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+    <category term="IO" scheme="https://xunle1.github.io/tags/IO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 线程池</title>
+    <link href="https://xunle1.github.io/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    <id>https://xunle1.github.io/2022/03/29/Java%E7%BA%BF%E7%A8%8B%E6%B1%A0/</id>
+    <published>2022-03-28T17:05:46.000Z</published>
+    <updated>2024-09-02T03:37:24.753Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;为什么要使用线程池&quot;&gt;&lt;a href=&quot;#为什么要使用线程池&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+    <category term="多线程" scheme="https://xunle1.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    <category term="并发" scheme="https://xunle1.github.io/tags/%E5%B9%B6%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>操作系统笔记</title>
+    <link href="https://xunle1.github.io/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <id>https://xunle1.github.io/2022/03/29/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</id>
+    <published>2022-03-28T17:04:25.000Z</published>
+    <updated>2024-09-02T03:35:52.513Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;操作系统&quot;&gt;&lt;a href=&quot;#操作系统&quot; class=&quot;headerlink&quot; title=&quot;操作系统&quot;&gt;&lt;/a&gt;操作系统&lt;/h1&gt;&lt;h2 id=&quot;第一章&quot;&gt;&lt;a href=&quot;#第一章&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="概述" scheme="https://xunle1.github.io/tags/%E6%A6%82%E8%BF%B0/"/>
+    
+    <category term="操作系统" scheme="https://xunle1.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络笔记</title>
+    <link href="https://xunle1.github.io/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <id>https://xunle1.github.io/2022/03/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</id>
+    <published>2022-03-28T17:01:30.000Z</published>
+    <updated>2024-09-02T03:36:03.689Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h1&gt;&lt;h2 id=&quot;第一章-概述&quot;&gt;&lt;a href=&quot;#第一章-概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="计算机网络" scheme="https://xunle1.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="概述" scheme="https://xunle1.github.io/tags/%E6%A6%82%E8%BF%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 类加载过程</title>
+    <link href="https://xunle1.github.io/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/"/>
+    <id>https://xunle1.github.io/2022/03/28/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B/</id>
+    <published>2022-03-28T01:12:39.000Z</published>
+    <updated>2024-09-02T03:37:17.700Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Java类加载过程&quot;&gt;&lt;a href=&quot;#Java类加载过程&quot; class=&quot;headerlink&quot; title=&quot;Java类加载过程&quot;&gt;&lt;/a&gt;Java类加载过程&lt;/h1&gt;&lt;p&gt;Java中类的加载过程如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
+    
+    <category term="类加载" scheme="https://xunle1.github.io/tags/%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebSocket</title>
+    <link href="https://xunle1.github.io/2022/03/28/WebSocket/"/>
+    <id>https://xunle1.github.io/2022/03/28/WebSocket/</id>
+    <published>2022-03-28T01:09:01.000Z</published>
+    <updated>2024-09-02T03:37:49.347Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;WebSocket&quot;&gt;&lt;a href=&quot;#WebSocket&quot; class=&quot;headerlink&quot; title=&quot;WebSocket&quot;&gt;&lt;/a&gt;WebSocket&lt;/h1&gt;&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="协议" scheme="https://xunle1.github.io/tags/%E5%8D%8F%E8%AE%AE/"/>
+    
+    <category term="计算机网络" scheme="https://xunle1.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 垃圾回收</title>
+    <link href="https://xunle1.github.io/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    <id>https://xunle1.github.io/2021/12/29/Java%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/</id>
+    <published>2021-12-29T07:39:57.000Z</published>
+    <updated>2024-09-02T03:37:13.930Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
+    
+    <category term="垃圾回收" scheme="https://xunle1.github.io/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 单例模式</title>
+    <link href="https://xunle1.github.io/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://xunle1.github.io/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-11-04T14:13:24.000Z</published>
+    <updated>2024-09-02T03:37:07.246Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;单例模式&quot;&gt;&lt;a href=&quot;#单例模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="设计模式" scheme="https://xunle1.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="singleton" scheme="https://xunle1.github.io/tags/singleton/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 代理模式</title>
+    <link href="https://xunle1.github.io/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/"/>
+    <id>https://xunle1.github.io/2021/11/03/Java%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-11-03T13:41:20.000Z</published>
+    <updated>2024-09-02T03:36:56.676Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;代理模式&quot;&gt;&lt;a href=&quot;#代理模式&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="proxy" scheme="https://xunle1.github.io/tags/proxy/"/>
+    
+    <category term="设计模式" scheme="https://xunle1.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 内存区域</title>
+    <link href="https://xunle1.github.io/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
+    <id>https://xunle1.github.io/2021/09/07/Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</id>
+    <published>2021-09-07T14:46:10.000Z</published>
+    <updated>2024-09-02T03:37:21.268Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Java内存区域&quot;&gt;&lt;a href=&quot;#Java内存区域&quot; class=&quot;headerlink&quot; title=&quot;Java内存区域&quot;&gt;&lt;/a&gt;Java内存区域&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;JDK 1.8以前：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="内存区域" scheme="https://xunle1.github.io/tags/%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/"/>
+    
+    <category term="JVM" scheme="https://xunle1.github.io/tags/JVM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈 LRU 缓存机制算法题</title>
+    <link href="https://xunle1.github.io/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    <id>https://xunle1.github.io/2021/07/23/%E6%B5%85%E8%B0%88LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6%E7%AE%97%E6%B3%95%E9%A2%98/</id>
+    <published>2021-07-23T12:03:02.000Z</published>
+    <updated>2024-09-02T03:36:26.239Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;146-LRU-缓存机制&quot;&gt;&lt;a href=&quot;#146-LRU-缓存机制&quot; class=&quot;headerlink&quot; title=&quot;146. LRU 缓存机制&quot;&gt;&lt;/a&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="算法题" scheme="https://xunle1.github.io/categories/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
+    
+    <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="LRU" scheme="https://xunle1.github.io/tags/LRU/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 刷题记录</title>
+    <link href="https://xunle1.github.io/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <id>https://xunle1.github.io/2021/07/09/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
+    <published>2021-07-09T06:30:25.000Z</published>
+    <updated>2024-09-02T03:37:40.302Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Leetcode&quot;&gt;&lt;a href=&quot;#Leetcode&quot; class=&quot;headerlink&quot; title=&quot;Leetcode&quot;&gt;&lt;/a&gt;Leetcode&lt;/h1&gt;&lt;h2 id=&quot;1-两数之和&quot;&gt;&lt;a href=&quot;#1-两数之和&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="算法题" scheme="https://xunle1.github.io/categories/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    
+    
+    <category term="leetcode" scheme="https://xunle1.github.io/tags/leetcode/"/>
+    
+    <category term="算法" scheme="https://xunle1.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 集成 Swagger</title>
+    <link href="https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/"/>
+    <id>https://xunle1.github.io/2021/07/06/SpringBoot%E9%9B%86%E6%88%90Swagger/</id>
+    <published>2021-07-06T05:39:26.000Z</published>
+    <updated>2024-09-02T03:37:44.568Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SpringBoot集成Swagger&quot;&gt;&lt;a href=&quot;#SpringBoot集成Swagger&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://xunle1.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Java" scheme="https://xunle1.github.io/tags/Java/"/>
+    
+    <category term="Swagger" scheme="https://xunle1.github.io/tags/Swagger/"/>
+    
+    <category term="SpringBoot" scheme="https://xunle1.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+</feed>

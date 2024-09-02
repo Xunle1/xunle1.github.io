@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="荀乐" />
+  <!-- Open Graph Description 简短摘要-->
+  
+  <!-- 用于搜索引擎的文章摘要 -->
+  
+  
+  
+  <title>
+    
+      Java 垃圾回收 
+      
+      
+      |
+    
+     xunle&#39;s blog
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/avatar.jpg">
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+    
+<link rel="stylesheet" href="/css/figcaption/mac-block.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="xunle's blog" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">荀乐</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">Categories</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Java 垃圾回收</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2024-09-02 11:37:13
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" title="技术">
+                    <b>#</b> 技术
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/JVM/" title="JVM">
+                    #JVM
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="垃圾回收">
+                    #垃圾回收
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Java虚拟机中，<strong>程序计数器</strong>、<strong>虚拟机栈</strong>、<strong>本地方法栈</strong>三个区域随线程而生，随线程而灭，栈中的栈帧随着方法的进入和退出而有条不紊地执行着入栈和出栈操作。每一个栈帧分配多少内存基本在编译期可以确定，因此这几个区域的内存分配和回收都具备确定性，不需要过多的考虑如何回收的问题，线程结束时内存自然跟着回收了。</p>
+<p>但<strong>Java堆</strong>和<strong>方法区</strong>则不同：一个接口的多个实现类需要的内存可能不一样，一个方法所执行的不同条件分支所需要的内存也可能不一样，只有处于运行期才能知道程序会创建多少对象，这部分的内存的分配与回收是动态的。所以垃圾收集器关注的就是这部分内存该如何管理。</p>
+<hr>
+<h2 id="对象的消亡"><a href="#对象的消亡" class="headerlink" title="对象的消亡"></a>对象的消亡</h2><p>判断对象是否存活有两种算法，一是<strong>引用计数算法</strong>，另一个是<strong>可达性分析算法</strong></p>
+<ul>
+<li><p><strong>引用计数算法：</strong></p>
+<p>简单来说，在对象中添加一个引用计数器，当有一个指向对象的引用时+1，当引用失效时-1，任何时刻计数器为零的对象就是不可能再被使用的。</p>
+<p>但主流的Java虚拟机中并没有选用该算法，因为该算法需要大量额外处理才能保证正确地工作。举例来讲它很难解决<strong>对象之间相互引用</strong>的问题。</p>
+</li>
+<li><p><strong>可达性分析算法：</strong></p>
+<p>该算法的基本思路是通过一系列称为“<strong>GC Roots</strong>”的根对象作为起始节点集，从这些节点开始根据引用关系向下搜索，搜索路径称为“引用链”。如果一个对象到GC Roots间没有任何引用链相连，则证明此对象是不可能再被使用的。</p>
+<p>在Java技术体系中，固定可作为GC Roots的对象包括以下几种：</p>
+<ul>
+<li>在虚拟机栈（栈帧中的本地变量表）中引用的对象，比如当前正在运行的方法中用到的参数、局部变量、临时变量等。</li>
+<li>在方法区中类静态属性引用的对象，比如Java类的引用类型静态变量</li>
+<li>在方法区中常量引用的对象，比如字符串常量池（String Table）里的引用</li>
+<li>在本地方法栈中<code>Native</code>方法引用的对象</li>
+<li>所有被同步锁持有的对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="Java中引用的概念"><a href="#Java中引用的概念" class="headerlink" title="Java中引用的概念"></a>Java中引用的概念</h3><ul>
+<li>JDK 1.2之前，Java 中引用的定义很传统：如果 reference 类型的数据存储的数值代表的是另一块内存的起始地址，就称这块内存代表一个引用。</li>
+<li>JDK 1.2之后，Java 对引用概念进行了扩充：将引用分为<strong>强引用</strong>、<strong>软引用</strong>、<strong>弱引用</strong>、<strong>虚引用</strong><ul>
+<li>强引用</li>
+<li>软引用</li>
+<li>弱引用</li>
+<li>虚引用</li>
+</ul>
+</li>
+</ul>
+<h3 id="如何判断一个常量是废弃常量？"><a href="#如何判断一个常量是废弃常量？" class="headerlink" title="如何判断一个常量是废弃常量？"></a>如何判断一个常量是废弃常量？</h3><p>当常量池中存在某一常量，而系统有没有任何一个对象引用这个常量，若在这时需要内存回收，而垃圾收集器判断确有必要的话，这个常量就会被清理出常量池。</p>
+<h3 id="如何判断一个类是无用的类？"><a href="#如何判断一个类是无用的类？" class="headerlink" title="如何判断一个类是无用的类？"></a>如何判断一个类是无用的类？</h3><p>判定一个常量是否是“废弃常量”比较简单，而要判定一个类是否是“无用的类”的条件则相对苛刻许多。类需要同时满足下面 3 个条件才能算是 <strong>“无用的类”</strong> ：</p>
+<ul>
+<li>该类所有的实例都已经被回收，也就是 Java 堆中不存在该类的任何实例。</li>
+<li>加载该类的 <code>ClassLoader</code> 已经被回收。</li>
+<li>该类对应的 <code>java.lang.Class</code> 对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</li>
+</ul>
+<p>虚拟机可以对满足上述 3 个条件的无用类进行回收，这里说的仅仅是“可以”，而并不是和对象一样不使用了就会必然被回收。</p>
+<hr>
+<h2 id="分代收集理论"><a href="#分代收集理论" class="headerlink" title="分代收集理论"></a>分代收集理论</h2><p>当今商业虚拟机的垃圾收集器，大多都遵循了“分代收集”的理论进行设计，它建立在两个分代假说上：</p>
+<ul>
+<li>弱分代假说：绝大多数对象都是朝生夕灭的</li>
+<li>强分代假说：熬过越多次垃圾收集过程的对象越难以消亡</li>
+</ul>
+<p>据此，垃圾收集器通常将Java堆划分出不同的区域，将回收对象按照年龄分配到不同的区域存储。</p>
+<p>在划分出不同的区域之后，垃圾收集器才可以针对某一区域或某些部分区域进行回收。</p>
+<p>由此，划分出了不同的回收类型：</p>
+<ul>
+<li>新生代收集（<strong>Minor GC&#x2F;Young GC</strong>）：目标只是新生代的垃圾收集。</li>
+<li>老年代收集（<strong>Major GC&#x2F;Old GC</strong>）：只有CMS收集器会有单独收集老年代的行为</li>
+<li>混合收集（<strong>Mixed GC</strong>）：目标是收集整个新生代及部分老年代，目前只有G1收集器有这个行为</li>
+<li>整堆收集（<strong>Full GC</strong>）：收集整个Java堆和方法区的垃圾收集。</li>
+</ul>
+<p>Java堆结构如图：</p>
+<p><img src="https://gitee.com/xunle1/drawing-bed/raw/master/typora%5C/20210908214450.png" alt="Java堆结构"></p>
+<hr>
+<h2 id="垃圾收集算法"><a href="#垃圾收集算法" class="headerlink" title="垃圾收集算法"></a>垃圾收集算法</h2><p>Java虚拟机中不同的垃圾回收器有不同的垃圾收集算法。可简单分为三种</p>
+<ul>
+<li><strong>标记——清除：</strong>该算法分为“标记”和“清除”阶段：首先标记出所有不需要回收的对象，在标记完成后统一回收掉所有没有被标记的对象。这种垃圾收集算法会带来两个明显的问题：<ol>
+<li><strong>效率问题</strong></li>
+<li><strong>空间问题（标记清除后会产生大量不连续的碎片）</strong></li>
+</ol>
+</li>
+<li><strong>标记——复制：</strong>为了解决效率问题，“标记-复制”收集算法出现了。它可以将内存分为大小相同的两块，每次使用其中的一块。当这一块的内存使用完后，就将还存活的对象复制到另一块去，然后再把使用的空间一次清理掉。这样就使每次的内存回收都是对内存区间的一半进行回收。</li>
+<li><strong>标记——整理：</strong>根据老年代的特点提出的一种标记算法，标记过程仍然与“标记-清除”算法一样，但后续步骤不是直接对可回收对象回收，而是让所有存活的对象向一端移动，然后直接清理掉端边界以外的内存。</li>
+</ul>
+<p>HotSpot 为什么要分为新生代和老年代？</p>
+<ul>
+<li>在新生代每次收集都有大量对象消亡，所以可以选择“<strong>标记——复制</strong>算法，提高效率</li>
+<li>老年代对象存活几率较高，所以可以采用”<strong>标记——清除</strong>“和”<strong>标记——整理</strong>”算法进行收集</li>
+</ul>
+<hr>
+<h2 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h2><ol>
+<li><p><strong>Serial（串行）收集器</strong></p>
+<p>单线程收集器，它只会使用一条垃圾收集线程去完成垃圾收集工作，并且在进行垃圾收集时需要暂停其他工作线程。</p>
+<p><strong>新生代采用标记——复制算法，老年代采用标记——整理算法</strong></p>
+<p>简单高效（与其他收集器的单线程相比）</p>
+</li>
+<li><p><strong>ParNew收集器</strong></p>
+<p>ParNew收集器是Serial收集器的多线程版本，除了使用多线程进行垃圾收集外，其余行为和Serial收集器一样</p>
+<p><strong>新生代采用标记——复制算法，老年代采用标记——整理算法</strong></p>
+</li>
+<li><p><strong>Parallel Scavenge收集器</strong></p>
+<p>Parallel Scavenge收集器也是多线程收集器，和ParNew收集器的区别在于Parallel Scavenge收集器更多关注的是<strong>吞吐量</strong>，而CMS等垃圾收集器更多关注的是用户线程的停顿时间。这也是Jdk1.8默认垃圾收集器</p>
+<p><strong>新生代采用标记——复制算法，老年代采用标记——整理算法</strong></p>
+</li>
+<li><p><strong>Serial Old收集器</strong></p>
+<p>Serial收集器的老年代版本，一种用途是在JDK1.5以前的版本中与Parallel Scavenge收集器搭配使用，另一种用途是作为CMS收集器的后备方案</p>
+</li>
+<li><p><strong>Parallel Old收集器</strong></p>
+<p>Parallel Scavenge收集器的老年代版本</p>
+</li>
+<li><p><strong>CMS收集器</strong></p>
+<p>CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时间为目标的收集器。CMS收集器实现了<strong>让垃圾回收线程与用户线程同时工作</strong></p>
+<p>CMS收集器采用的是“<strong>标记——清除</strong>”算法，运作过程分四个步骤：</p>
+<ol>
+<li><strong>初始标记</strong></li>
+<li><strong>并发标记</strong></li>
+<li><strong>重新标记</strong></li>
+<li><strong>并发清除</strong></li>
+</ol>
+</li>
+<li><p><strong>G1收集器</strong></p>
+<p><strong>G1 (Garbage-First)</strong> 是一款面向服务器的垃圾收集器,主要针对配备多颗处理器及大容量内存的机器. 以极高概率满足 GC 停顿时间要求的同时,还具备高吞吐量性能特征.</p>
+</li>
+<li><p><strong>ZGC收集器</strong></p>
+</li>
+</ol>
+<h3 id="CMS收集器"><a href="#CMS收集器" class="headerlink" title="CMS收集器"></a>CMS收集器</h3><blockquote>
+<p>  CMS 前的垃圾收集器在 GC 线程工作时都会 **STW(Stop The World)**，即停止用户线程。而 CMS 的 GC 线程在部分场景下可以与用户线程并行。</p>
+<ul>
+<li><p><strong>初始标记</strong></p>
+<p>初始标记阶段会标记 <strong>GCRoots 直接关联的对象</strong>以及 <strong>年轻代指向老年代的对象</strong>，会发生短暂的 STW ，但由于没有向下追溯（只标记一层），所以速度很快</p>
+</li>
+<li><p><strong>并发标记</strong></p>
+<p>并发标记阶段主要<strong>从 GCRoots 向下追溯，标记所有可达对象</strong>，该阶段由于与用户线程并行，所以可能有对象发生变化</p>
+</li>
+<li><p><strong>重新标记</strong></p>
+<p>该阶段会发生 STW 暂停用户线程，扫描 <strong>老年代(dirty card)<strong>和</strong>年轻代</strong>，找出存活的老年代对象</p>
+</li>
+<li><p><strong>并发清除</strong></p>
+<p>与用户线程并行，回收所有<strong>不可达对象</strong>，这个过程中可能产生浮动垃圾</p>
+</li>
+</ul>
+<p>  缺点：</p>
+<ul>
+<li>使用标记清除，产生内存碎片，空间利用率减小</li>
+<li>并发过程需要预留空间，如果预留空间不足，会报 <strong>Concurrent Mode Failure</strong>，然后采用 <strong>Serial Old</strong> 进行老年代回收</li>
+<li>要处理内存碎片，需要 STW</li>
+</ul>
+</blockquote>
+<h3 id="G1收集器"><a href="#G1收集器" class="headerlink" title="G1收集器"></a>G1收集器</h3><blockquote>
+<p>  CMS 垃圾收集器会出现<strong>停顿时间不可预知</strong>的情况，G1 收集器会让用户提前设定一个可以接受的 STW 时间，根据这个时间尽可能满足。</p>
+<p>  G1 收集器将堆空间以逻辑形式划分为一个个 <strong>Region</strong></p>
+<p>  G1 收集器的运作大致分为以下几个步骤：</p>
+<ul>
+<li><strong>初始标记</strong></li>
+<li><strong>并发标记</strong></li>
+<li><strong>最终标记</strong></li>
+<li><strong>筛选回收</strong></li>
+</ul>
+</blockquote>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2021/11/04/Java%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2024-09-02 11:37:13
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E6%8A%80%E6%9C%AF/" title="技术">
+                        <b>#</b> 技术
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/JVM/" title="JVM">
+                        #JVM
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/" title="垃圾回收">
+                        #垃圾回收
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2022/03/28/WebSocket/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B6%88%E4%BA%A1"><span class="toc-text">对象的消亡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E4%B8%AD%E5%BC%95%E7%94%A8%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">Java中引用的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%B8%B8%E9%87%8F%E6%98%AF%E5%BA%9F%E5%BC%83%E5%B8%B8%E9%87%8F%EF%BC%9F"><span class="toc-text">如何判断一个常量是废弃常量？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E7%B1%BB%E6%98%AF%E6%97%A0%E7%94%A8%E7%9A%84%E7%B1%BB%EF%BC%9F"><span class="toc-text">如何判断一个类是无用的类？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%90%86%E8%AE%BA"><span class="toc-text">分代收集理论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-text">垃圾收集算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CMS%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">CMS收集器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#G1%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">G1收集器</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          
+              <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+                <i class="iconfont icon-github"></i>
+              </a>
+              
+        </li>
+        
+        <li>
+          
+            <a title="email" href="mailto:xunle1121@gmail.com">
+              <i class="iconfont icon-envelope"></i>
+            </a>
+            
+        </li>
+        
+        <li>
+          
+              <a title="rss" href="/atom.xml">
+                <i class="iconfont icon-rss"></i>
+              </a>
+              
+        </li>
+        
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.xunle.io">© 2021 - 2024 荀乐</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+
+      </div>
+    </div>
+  </body>
+</html>
