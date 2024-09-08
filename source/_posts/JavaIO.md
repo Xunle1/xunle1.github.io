@@ -1,6 +1,7 @@
 ---
 title: Java IO
 author: 荀乐
+categories: 技术
 tags:
   - IO
   - Java

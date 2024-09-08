@@ -1,6 +1,7 @@
 ---
 title: 浅谈 LRU 缓存机制算法题
 author: 荀乐
+categories: 算法题
 tags:
   - LRU
   - leetcode

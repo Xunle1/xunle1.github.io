@@ -1,6 +1,7 @@
 ---
 title: Java 垃圾回收
 author: 荀乐
+categories: 技术
 tags:
   - 垃圾回收
   - JVM

@@ -1,6 +1,7 @@
 ---
 title: WebSocket
 author: 荀乐
+categories: 技术
 tags:
   - 协议
   - 计算机网络

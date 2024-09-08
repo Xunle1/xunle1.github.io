@@ -1,6 +1,7 @@
 ---
 title: Java 代理模式
 author: 荀乐
+categories: 技术
 tags:
   - proxy
   - 设计模式

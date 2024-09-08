@@ -1,6 +1,7 @@
 ---
 title: Java 单例模式
 author: 荀乐
+categories: 技术
 tags:
   - singleton
   - 设计模式

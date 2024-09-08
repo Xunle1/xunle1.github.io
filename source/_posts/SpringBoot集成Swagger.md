@@ -1,6 +1,7 @@
 ---
 title: Spring Boot 集成 Swagger
 author: 荀乐
+categories: 技术
 tags:
  - Swagger
  - SpringBoot

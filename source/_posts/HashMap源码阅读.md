@@ -1,6 +1,7 @@
 ---
 title: HashMap 源码阅读
 date: 2024-07-10 21:16:34
+categories: 技术
 tags:
   - HashMap
   - 源码

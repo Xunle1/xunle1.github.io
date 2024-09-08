@@ -1,6 +1,7 @@
 ---
 title: Java 内存区域
 author: 荀乐
+categories: 技术
 tags:
   - 内存区域
   - JVM
