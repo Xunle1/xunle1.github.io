@@ -21,6 +21,7 @@ type: 'about'
 - [Runcat](https://kyome.io/runcat/index.html): 猫
 - [VMware Fusion](https://www.vmware.com/products/fusion.html): 虚拟机
 - [Pearcleaner](https://github.com/alienator88/Pearcleaner): 清理
+- [Clash X Pro] 代理
 
 #### CLI
 
